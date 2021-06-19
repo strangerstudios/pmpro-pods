@@ -1,0 +1,17 @@
+/*
+	Custom styles for the PMPro Pods Add On.
+ */
+
+.pods-form-group input[type="text"],
+.pods-form-group input[type="number"],
+.pods-form-group input[type="website"],
+.form-table.pods-form-group td input[type="text"],
+.form-table.pods-form-group td input[type="number"],
+.form-table.pods-form-group td input[type="website"] {
+	max-width: 25em;
+}
+
+.form-table.pods-form-group td textarea,
+.pods-form-group textarea {
+	max-width: 42em;
+}
