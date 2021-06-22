@@ -16,12 +16,28 @@ require_once 'includes/objects/member-checkout.php';
 require_once 'includes/objects/member-profile.php';
 require_once 'includes/objects/order.php';
 
+/**
+ * Determine whether the Pod type is a PMPro integration type.
+ *
+ * @since TBD
+ *
+ * @param string $type The Pod type.
+ *
+ * @return bool Whether the Pod type is a PMPro integration type.
+ */
 function pmpro_pods_is_covered_pod_type( $type ) {
 	$types = pmpro_pods_get_pod_types();
 
 	return isset( $types[ $type ] );
 }
 
+/**
+ * Get the list of PMPro integration types and their configurations.
+ *
+ * @since TBD
+ *
+ * @return array[] The list of PMPro integration types and their configurations.
+ */
 function pmpro_pods_get_pod_types() {
 	global $wpdb;
 
