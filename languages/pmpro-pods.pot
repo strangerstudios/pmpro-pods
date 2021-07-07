@@ -1,0 +1,164 @@
+# Copyright (C) 2021 Paid Memberships Pro
+# This file is distributed under the same license as the Paid Memberships Pro - Pods Add On plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Paid Memberships Pro - Pods Add On 0.1\n"
+"Report-Msgid-Bugs-To: info@paidmembershipspro.com\n"
+"Last-Translator: Paid Memberships Pro <info@paidmembershipspro.com>\n"
+"Language-Team: Paid Memberships Pro <info@paidmembershipspro.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-07-07T04:49:04+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: pmpro-pods\n"
+
+#. Plugin Name of the plugin
+msgid "Paid Memberships Pro - Pods Add On"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.paidmembershipspro.com/add-ons/pods/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Pods integration for Paid Memberships Pro"
+msgstr ""
+
+#. Author of the plugin
+msgid "Paid Memberships Pro"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.paidmembershipspro.com/"
+msgstr ""
+
+#: includes/objects/member-profile.php:56
+msgid "Order Information"
+msgstr ""
+
+#: includes/pods-integration.php:71
+msgid "More Fields"
+msgstr ""
+
+#: includes/pods-integration.php:128
+#: pmpro-pods.php:67
+msgid "PMPro Membership Level"
+msgstr ""
+
+#: includes/pods-integration.php:136
+#: includes/pods-integration.php:213
+msgid "PMPro Options"
+msgstr ""
+
+#: includes/pods-integration.php:147
+msgid "Profile area(s) to show this group of fields on"
+msgstr ""
+
+#: includes/pods-integration.php:149
+#: includes/pods-integration.php:166
+#: includes/pods-integration.php:188
+msgid "All available fields in this group will show in the sections chosen."
+msgstr ""
+
+#: includes/pods-integration.php:152
+msgid "Front-facing Profile"
+msgstr ""
+
+#: includes/pods-integration.php:153
+msgid "WP Dashboard Profile"
+msgstr ""
+
+#: includes/pods-integration.php:164
+msgid "Checkout Section to show this group of fields on"
+msgstr ""
+
+#: includes/pods-integration.php:169
+msgid "Do NOT show on Checkout"
+msgstr ""
+
+#: includes/pods-integration.php:170
+msgid "After Level Cost / Before Discount"
+msgstr ""
+
+#: includes/pods-integration.php:171
+msgid "After Pricing Fields"
+msgstr ""
+
+#: includes/pods-integration.php:172
+msgid "After Username (no heading)"
+msgstr ""
+
+#: includes/pods-integration.php:173
+msgid "After Password (no heading)"
+msgstr ""
+
+#: includes/pods-integration.php:174
+msgid "After Email (no heading)"
+msgstr ""
+
+#: includes/pods-integration.php:175
+msgid "After Billing Fields"
+msgstr ""
+
+#: includes/pods-integration.php:176
+msgid "After Payment Information Fields"
+msgstr ""
+
+#: includes/pods-integration.php:177
+msgid "After TOS Fields"
+msgstr ""
+
+#: includes/pods-integration.php:178
+msgid "After Captcha"
+msgstr ""
+
+#: includes/pods-integration.php:179
+msgid "Before Submit Button"
+msgstr ""
+
+#: includes/pods-integration.php:186
+msgid "Sections to show this group of fields on"
+msgstr ""
+
+#: includes/pods-integration.php:191
+msgid "After Billing Details"
+msgstr ""
+
+#: includes/pods-integration.php:192
+msgid "Before Content Settings"
+msgstr ""
+
+#: includes/pods-integration.php:193
+msgid "After Content Settings"
+msgstr ""
+
+#: includes/pods-integration.php:201
+msgid "Require Membership to see this group of fields"
+msgstr ""
+
+#: includes/pods-integration.php:202
+msgid "All available fields in this group will show if the Member has the required membership level(s) chosen."
+msgstr ""
+
+#: includes/pods-integration.php:222
+msgid "Require Membership to see this field"
+msgstr ""
+
+#: pmpro-pods.php:46
+msgid "PMPro Member"
+msgstr ""
+
+#: pmpro-pods.php:57
+msgid "PMPro Order"
+msgstr ""
+
+#: pmpro-pods.php:296
+#: pmpro-pods.php:305
+msgid "Sorry, the file type for %s is not permitted for security reasons."
+msgstr ""
+
+#: pmpro-pods.php:551
+msgid "Unable to add/update PMPro Register Helper registration fields for this member"
+msgstr ""
