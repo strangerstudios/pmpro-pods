@@ -45,17 +45,17 @@ function pmpro_pods_api_save_pod_meta_data( $meta, $pod ) {
 		return $meta;
 	}
 
-	$meta['storage']          = 'meta';
-	$meta['table']            = $type['table'];
-	$meta['meta_table']       = $type['meta_table'];
-	$meta['field_id']         = $type['field_id'];
-	$meta['field_index']      = $type['field_index'];
-	$meta['meta_field_id']    = $type['meta_field_id'];
-	$meta['meta_field_index'] = $type['meta_field_index'];
-	$meta['meta_field_value'] = $type['meta_field_value'];
+	$meta['storage']                 = 'meta';
+	$meta['table_custom']            = $type['table'];
+	$meta['meta_table_custom']       = $type['meta_table'];
+	$meta['field_id_custom']         = $type['field_id'];
+	$meta['field_index_custom']      = $type['field_index'];
+	$meta['meta_field_id_custom']    = $type['meta_field_id'];
+	$meta['meta_field_index_custom'] = $type['meta_field_index'];
+	$meta['meta_field_value_custom'] = $type['meta_field_value'];
 
 	if ( ! empty( $type['field_slug'] ) ) {
-		$meta['field_slug'] = $type['field_slug'];
+		$meta['field_slug_custom'] = $type['field_slug'];
 	}
 
 	return $meta;
