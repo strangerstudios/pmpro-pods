@@ -216,20 +216,42 @@ function pmpro_pods_init() {
 		} );
 
 		add_filter( 'pods_admin_setup_edit_field_options_' . $type, static function ( $options ) {
-			$options['pmpro'] = [
-				'pmpro_require_membership' => [
-					'name'             => 'pmpro_require_membership',
-					'label'            => __( 'Require Membership to see this field', 'pmpro-pods' ),
-					'type'             => 'pick',
-					'pick_object'      => 'pmpro_membership_level',
-					'default'          => 0,
-					'pick_format_type' => 'multi',
-				],
+			$options['pmpro'] = [];
+
+			$options['pmpro']['pmpro_require_membership'] = [
+				'name'             => 'pmpro_require_membership',
+				'label'            => __( 'Require Membership to see this field', 'pmpro-pods' ),
+				'type'             => 'pick',
+				'pick_object'      => 'pmpro_membership_level',
+				'default'          => 0,
+				'pick_format_type' => 'multi',
+			];
+
+			$options['pmpro']['pmpro_show_on_membership_level'] = [
+				'name'             => 'pmpro_show_on_membership_level',
+				'label'            => __( 'Only show field on checkout for a specific Membership Level', 'pmpro-pods' ),
+				'type'             => 'pick',
+				'pick_object'      => 'pmpro_membership_level',
+				'default'          => 0,
+				'pick_format_type' => 'multi',
 			];
 
 			return $options;
 		} );
 	}
+
+	// @todo Support this in the future better with CPT supports compatibility in PMPro.
+	add_filter( 'pods_admin_setup_edit_options_post_type', static function ( $options ) {
+		$options['advanced']['pmpro_enabled_require_membership'] = [
+			'name'              => 'pmpro_enable_require_membership',
+			'label'             => __( 'PMPro: Enable Require Membership functionality', 'pmpro-pods' ),
+			'type'              => 'boolean',
+			'default'           => 0,
+			'boolean_yes_label' => '',
+		];
+
+		return $options;
+	} );
 }
 
 add_action( 'pods_init', 'pmpro_pods_init' );
