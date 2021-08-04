@@ -268,6 +268,8 @@ add_action( 'pods_init', 'pmpro_pods_init' );
  * @param bool             $strict      Decides whether the previous saved meta should be deleted or not.
  * @param bool             $sanitized   Will unsanitize the data, should be passed if the data is sanitized before sending.
  * @param array            $fields      The array of fields and their options, for further processing with.
+ *
+ * @return int|string|false The object ID after saving, false if not saved.
  */
 function pmpro_pods_api_save_wp_object_for_custom_object_type( $object_id, $object_type, $data, $meta, $strict, $sanitized, $fields ) {
 	$types = pmpro_pods_get_pod_types();
@@ -280,6 +282,10 @@ function pmpro_pods_api_save_wp_object_for_custom_object_type( $object_id, $obje
 
 	// Handle saving the data.
 	$existing_object_id = pods_v( $type['field_id'], $data );
+
+	if ( empty( $existing_object_id ) ) {
+		$existing_object_id = false;
+	}
 
 	global $wpdb;
 
@@ -442,11 +448,6 @@ function pmpro_pods_api_save_wp_object_for_custom_object_type( $object_id, $obje
 				array_values( $formats )
 			);
 
-			// There was an error saving this data.
-			if ( ! $saved_object_id ) {
-				return $saved_object_id;
-			}
-
 			// The item ID is still the same so return that.
 			if ( ! empty( $existing_object_id ) ) {
 				$object_id = $existing_object_id;
@@ -471,13 +472,10 @@ add_filter( 'pods_api_save_wp_object_for_custom_object_type', 'pmpro_pods_api_sa
  *
  * @param bool   $use_meta_fallback Whether to support saving meta using the meta fallback.
  * @param string $object_type       The custom object type.
- * @param array  $data              All object data to be saved
- * @param array  $meta              Associative array of meta keys and values.
- * @param bool   $strict            Decides whether the previous saved meta should be deleted or not.
- * @param bool   $sanitized         Will unsanitize the data, should be passed if the data is sanitized before sending.
- * @param array  $fields            The array of fields and their options, for further processing with.
+ *
+ * @return bool Whether to support saving meta using the meta fallback.
  */
-function pmpro_pods_api_save_wp_object_use_meta_fallback( $use_meta_fallback, $object_type, $data, $meta, $strict, $sanitized, $fields ) {
+function pmpro_pods_api_save_wp_object_use_meta_fallback( $use_meta_fallback, $object_type ) {
 	// Already using meta fallback.
 	if ( $use_meta_fallback ) {
 		return $use_meta_fallback;
@@ -489,4 +487,5 @@ function pmpro_pods_api_save_wp_object_use_meta_fallback( $use_meta_fallback, $o
 	return isset( $types[ $object_type ] );
 }
 
-add_filter( 'pods_api_save_wp_object_use_meta_fallback', 'pmpro_pods_api_save_wp_object_use_meta_fallback', 10, 7 );
+add_filter( 'pods_api_save_wp_object_use_meta_fallback', 'pmpro_pods_api_save_wp_object_use_meta_fallback', 10, 2 );
+add_filter( 'pods_field_wp_object_use_meta_fallback', 'pmpro_pods_api_save_wp_object_use_meta_fallback', 10, 2 );
