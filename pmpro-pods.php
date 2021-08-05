@@ -11,6 +11,7 @@ Text Domain: pmpro-pods
 
 require_once 'includes/metadata-compat.php';
 require_once 'includes/pods-integration.php';
+require_once 'includes/permissions.php';
 require_once 'includes/objects/level.php';
 require_once 'includes/objects/member-checkout.php';
 require_once 'includes/objects/member-profile.php';

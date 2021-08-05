@@ -91,35 +91,6 @@ function pmpro_pods_form_render_fields_group_pre() {
 
 add_action( 'pods_form_render_fields_group_pre', 'pmpro_pods_form_render_fields_group_pre' );
 
-function pmpro_pods_permissions_user_has_permission( $permission, $object, $user ) {
-	// Permission already disabled.
-	if ( ! $permission ) {
-		return $permission;
-	}
-
-	// No membership levels required.
-	if ( empty( $object['pmpro_require_membership'] ) ) {
-		return $permission;
-	}
-
-	$object['pmpro_require_membership'] = array_map( 'absint', (array) $object['pmpro_require_membership'] );
-	$object['pmpro_require_membership'] = array_filter( $object['pmpro_require_membership'] );
-
-	// No valid membership levels required.
-	if ( empty( $object['pmpro_require_membership'] ) ) {
-		return $permission;
-	}
-
-	// Membership requires a valid user.
-	if ( empty( $user ) ) {
-		return false;
-	}
-
-	return pmpro_hasMembershipLevel( $object['pmpro_require_membership'], $user->ID );
-}
-
-add_filter( 'pods_permissions_user_has_permission', 'pmpro_pods_permissions_user_has_permission', 10, 3 );
-
 function pmpro_pods_init() {
 	if ( ! function_exists( 'pmpro_getAllLevels' ) ) {
 		return;
@@ -215,34 +186,45 @@ function pmpro_pods_init() {
 			return $tabs;
 		} );
 
-		add_filter( 'pods_admin_setup_edit_field_options_' . $type, static function ( $options ) {
+		add_filter( 'pods_admin_setup_edit_field_options_' . $type, static function ( $options, $pod ) {
 			$options['pmpro'] = [];
 
 			$options['pmpro']['pmpro_require_membership'] = [
 				'name'             => 'pmpro_require_membership',
-				'label'            => __( 'Require Membership to see this field', 'pmpro-pods' ),
+				'label'            => __( 'Require Membership to update this field', 'pmpro-pods' ),
+				'help'             => __( 'If this is a checkout field, then having this membership level already will be required to see this field.', 'pmpro-pods' ),
 				'type'             => 'pick',
 				'pick_object'      => 'pmpro_membership_level',
 				'default'          => 0,
 				'pick_format_type' => 'multi',
+				'dependency' => true,
 			];
 
-			$options['pmpro']['pmpro_show_on_membership_level'] = [
-				'name'             => 'pmpro_show_on_membership_level',
-				'label'            => __( 'Only show field on checkout for a specific Membership Level', 'pmpro-pods' ),
-				'type'             => 'pick',
-				'pick_object'      => 'pmpro_membership_level',
-				'default'          => 0,
-				'pick_format_type' => 'multi',
-			];
+			if ( 'pmpro_membership_user' === $pod->get_name() ) {
+				$levels    = pmpro_getAllLevels();
+				$level_ids = wp_list_pluck( $levels, 'id' );
+
+				$options['pmpro']['pmpro_show_on_checkout_membership_level'] = [
+					'name'              => 'pmpro_show_on_checkout_membership_level',
+					'label'             => __( 'Show on checkout only for selected Required Membership Levels', 'pmpro-pods' ),
+					'help'              => __( 'This will allow showing this field on checkout only for a specific checkout level as selected above. This will allow for the field to be able to be shown on checkout for the corresponding required level as well as when editing the profile field (if the group is set to show on front/admin profile).', 'pmpro-pods' ),
+					'type'              => 'boolean',
+					'default'           => 0,
+					'boolean_yes_label' => '',
+					'excludes-on'       => [
+						'pmpro_require_membership' => 0,
+					],
+				];
+			}
 
 			return $options;
-		} );
+		}, 10, 2 );
 	}
 
-	// @todo Support this in the future better with CPT supports compatibility in PMPro.
+	// @todo Core: Support this in the future better with CPT supports compatibility in PMPro.
 	add_filter( 'pods_admin_setup_edit_options_post_type', static function ( $options ) {
-		$options['advanced']['pmpro_enabled_require_membership'] = [
+		// @todo Add support for this.
+		$options['advanced']['pmpro_enable_require_membership'] = [
 			'name'              => 'pmpro_enable_require_membership',
 			'label'             => __( 'PMPro: Enable Require Membership functionality', 'pmpro-pods' ),
 			'type'              => 'boolean',
