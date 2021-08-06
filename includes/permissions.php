@@ -1,6 +1,19 @@
 <?php
 
-add_filter( 'pods_permissions_user_has_permission', static function ( $user_has_permission, $object, $user ) {
+use Pods\Whatsit;
+
+/**
+ * Filter whether a user has permission to an object based on the PMPro restrictions set.
+ *
+ * @since TBD
+ *
+ * @param bool             $user_has_permission Whether a user has permission to an object.
+ * @param array|Whatsit    $object              The object data.
+ * @param null|int|WP_User $user                The user ID or object (default: current user).
+ *
+ * @return bool Whether a user has permission to an object.
+ */
+function pmpro_pods_permissions_user_has_permission( $user_has_permission, $object, $user ) {
 	if ( ! $user_has_permission ) {
 		return $user_has_permission;
 	}
@@ -13,30 +26,42 @@ add_filter( 'pods_permissions_user_has_permission', static function ( $user_has_
 
 	// Restrict if they do not have access to the membership level.
 	return ! pmpro_pods_is_membership_level_restricted_for_user( $object, $user );
-}, 10, 3 );
+}
 
-add_filter( 'pods_permissions_are_permissions_restricted', static function ( $are_permissions_restricted, $object ) {
+add_filter( 'pods_permissions_user_has_permission', 'pmpro_pods_permissions_user_has_permission', 10, 3 );
+
+/**
+ * Filter whether permissions are restricted for an object based on PMPro restrictions set.
+ *
+ * @since TBD
+ *
+ * @param bool          $are_permissions_restricted Whether the permissions are restricted for an object.
+ * @param array|Whatsit $object                     The object data.
+ *
+ * @return bool Whether the permissions are restricted for an object.
+ */
+function pmpro_pods_permissions_are_permissions_restricted( $are_permissions_restricted, $object ) {
 	if ( $are_permissions_restricted ) {
 		return $are_permissions_restricted;
 	}
 
-	$required_membership_levels = pmpro_pods_get_required_membership_levels( $object );
-
 	return (
-		! empty( $required_membership_levels )
+		pmpro_pods_get_required_membership_levels( $object )
 		|| pmpro_pods_is_checkout_membership_level_restricted( $object )
 	);
-}, 10, 2 );
+}
+
+add_filter( 'pods_permissions_are_permissions_restricted', 'pmpro_pods_permissions_are_permissions_restricted', 10, 2 );
 
 /**
- * Determine whether roles are restricted for user on an object.
+ * Determine whether membership level is restricted for user on an object.
  *
- * @since 2.8.0
+ * @since TBD
  *
  * @param array|Whatsit $object The object data.
  * @param WP_User       $user   The user ID or object (default: current user).
  *
- * @return bool Whether roles are restricted for user on an object.
+ * @return bool Whether membership level is restricted for user on an object.
  */
 function pmpro_pods_is_membership_level_restricted_for_user( $object, $user ) {
 	$required_membership_levels = pmpro_pods_get_required_membership_levels( $object );
@@ -54,13 +79,13 @@ function pmpro_pods_is_membership_level_restricted_for_user( $object, $user ) {
 }
 
 /**
- * Get the list of restricted capabilities.
+ * Get the list of required membership levels.
  *
- * @since 2.8
+ * @since TBD
  *
  * @param array|Whatsit $object The object data.
  *
- * @return array|false The list of restricted capabilities or false if not restricted.
+ * @return array|false The list of required membership levels or false if not restricted.
  */
 function pmpro_pods_get_required_membership_levels( $object ) {
 	$required_membership_levels = pods_v( 'pmpro_require_membership', $object );
@@ -75,36 +100,34 @@ function pmpro_pods_get_required_membership_levels( $object ) {
 }
 
 /**
- * Determine whether roles are restricted for user on an object.
+ * Determine whether checkout membership level is restricted on an object.
  *
- * @since 2.8.0
+ * @since TBD
  *
  * @param array|Whatsit $object The object data.
  *
- * @return bool Whether roles are restricted for user on an object.
+ * @return bool Whether checkout membership level is restricted on an object.
  */
 function pmpro_pods_is_checkout_membership_level_restricted( $object ) {
-	$checkout_membership_levels = pmpro_pods_get_checkout_membership_levels( $object );
-
 	// Restrict if checkout levels are provided.
-	return ! empty( $checkout_membership_levels );
+	return false !== pmpro_pods_get_checkout_membership_levels( $object );
 }
 
 /**
- * Determine whether roles are restricted for user on an object.
+ * Determine whether checkout membership level is restricted for a user on an object.
  *
- * @since 2.8.0
+ * @since TBD
  *
  * @param array|Whatsit $object The object data.
  * @param WP_User       $user   The user ID or object (default: current user).
  *
- * @return bool Whether roles are restricted for user on an object.
+ * @return bool Whether checkout membership level is restricted for a user on an object.
  */
 function pmpro_pods_is_checkout_membership_level_restricted_for_user( $object, $user ) {
 	$checkout_membership_levels = pmpro_pods_get_checkout_membership_levels( $object );
 
 	// Do not restrict if no checkout or required membership levels are provided.
-	if ( empty( $checkout_membership_levels ) ) {
+	if ( ! $checkout_membership_levels ) {
 		return false;
 	}
 
@@ -135,13 +158,13 @@ function pmpro_pods_is_checkout_membership_level_restricted_for_user( $object, $
 }
 
 /**
- * Get the list of restricted capabilities.
+ * Get the list of checkout membership levels if restricted.
  *
- * @since 2.8
+ * @since TBD
  *
  * @param array|Whatsit $object The object data.
  *
- * @return array|false The list of restricted capabilities or false if not restricted.
+ * @return array|false The list of checkout membership levels or false if not restricted.
  */
 function pmpro_pods_get_checkout_membership_levels( $object ) {
 	$show_on_checkout_membership_level = (int) pods_v( 'pmpro_show_on_checkout_membership_level', $object );
