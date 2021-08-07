@@ -32,7 +32,14 @@ function pmpro_pods_autoload( $class ) {
 		return;
 	}
 
-	$file = __DIR__ . '/src/' . str_replace( '\\', '/', $class );
+	// Replace \ with / for folders.
+	$class_path = str_replace( '\\', DIRECTORY_SEPARATOR, $class );
+
+	// Remove the namespace root.
+	$class_path = str_replace( 'PMPro_Pods' . DIRECTORY_SEPARATOR, '', $class_path );
+
+	// Build file path.
+	$file = __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . $class_path . '.php';
 
 	if ( file_exists( $file ) ) {
 		require_once $file;
