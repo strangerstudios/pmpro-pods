@@ -9,96 +9,84 @@ Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-pods
 */
 
-require_once 'includes/metadata-compat.php';
-require_once 'includes/pods-integration.php';
-require_once 'includes/permissions.php';
-require_once 'includes/objects/level.php';
-require_once 'includes/objects/member-checkout.php';
-require_once 'includes/objects/member-profile.php';
-require_once 'includes/objects/order.php';
+namespace PMPro_Pods;
+
+use PMPro_Pods\PMPro\Objects\Level;
+use PMPro_Pods\PMPro\Objects\Member_Checkout;
+use PMPro_Pods\PMPro\Objects\Member_Profile;
+use PMPro_Pods\PMPro\Objects\Order;
+use PMPro_Pods\Pods\Integration;
+use PMPro_Pods\Pods\Meta_Compatibility;
+use PMPro_Pods\Pods\Permissions;
 
 /**
- * Determine whether the Pod type is a PMPro integration type.
+ * Autoload the classes for our namespace.
  *
  * @since TBD
  *
- * @param string $type The Pod type.
- *
- * @return bool Whether the Pod type is a PMPro integration type.
+ * @param string $class The class name to load.
  */
-function pmpro_pods_is_covered_pod_type( $type ) {
-	$types = pmpro_pods_get_pod_types();
+function pmpro_pods_autoload( $class ) {
+	// Check that the class starts with our namespace.
+	if ( 0 !== strpos( $class, 'PMPro_Pods\\' ) ) {
+		return;
+	}
 
-	return isset( $types[ $type ] );
+	$file = __DIR__ . '/src/' . str_replace( '\\', '/', $class );
+
+	if ( file_exists( $file ) ) {
+		require_once $file;
+	}
 }
 
-/**
- * Get the list of PMPro integration types and their configurations.
- *
- * @since TBD
- *
- * @return array[] The list of PMPro integration types and their configurations.
- */
-function pmpro_pods_get_pod_types() {
-	global $wpdb;
-
-	return [
-		'pmpro_membership_user' => [
-			'label'            => __( 'PMPro Member', 'pmpro-pods' ),
-			'table'            => $wpdb->users,
-			'meta_table'       => $wpdb->usermeta,
-			'field_id'         => 'ID',
-			'field_index'      => 'display_name',
-			'field_slug'       => 'user_nicename',
-			'meta_field_id'    => 'user_id',
-			'meta_field_index' => 'meta_key',
-			'meta_field_value' => 'meta_value',
-		],
-		'pmpro_membership_order'  => [
-			'label'            => __( 'PMPro Order', 'pmpro-pods' ),
-			'table'            => $wpdb->pmpro_membership_orders,
-			'meta_table'       => $wpdb->pmpro_membership_ordermeta,
-			'field_id'         => 'id',
-			'field_index'      => 'code',
-			'meta_field_id'    => 'pmpro_membership_order_id',
-			'meta_field_index' => 'meta_key',
-			'meta_field_value' => 'meta_value',
-		],
-		'pmpro_membership_level'  => [
-			'label'            => __( 'PMPro Membership Level', 'pmpro-pods' ),
-			'table'            => $wpdb->pmpro_membership_levels,
-			'meta_table'       => $wpdb->pmpro_membership_levelmeta,
-			'field_id'         => 'id',
-			'field_index'      => 'name',
-			'meta_field_id'    => 'pmpro_membership_level_id',
-			'meta_field_index' => 'meta_key',
-			'meta_field_value' => 'meta_value',
-		],
-	];
-}
+spl_autoload_register( '\PMPro_Pods\pmpro_pods_autoload' );
 
 /**
- * Get the list of all level names keyed by ID.
+ * Handle init of the plugin hooks.
  *
  * @since TBD
- *
- * @return string[] List of all level names keyed by ID.
  */
-function pmpro_pods_get_all_level_names_by_id() {
+function pmpro_pods_init() {
 	if ( ! function_exists( 'pmpro_getAllLevels' ) ) {
-		return [];
+		return;
 	}
 
-	$all_levels = pmpro_getAllLevels();
+	/*
+	 * Hook into Pods where it needs it to support our custom objects.
+	 */
+	$pods_integration = new Integration();
+	$pods_integration->hook();
 
-	$levels = [];
+	/*
+	 * Handle object permissions to show/hide based on our pod/group/field PMPro options.
+	 */
+	$pods_permissions = new Permissions();
+	$pods_permissions->hook();
 
-	foreach ( $all_levels as $level ) {
-		$levels[ $level->id ] = $level->name;
-	}
+	/*
+	 * PMPro Member / User meta compatibility.
+	 */
+	$pods_meta_compatibility = new Meta_Compatibility();
+	$pods_meta_compatibility->hook();
 
-	return $levels;
+	/*
+	 * The object form/saving hooks.
+	 */
+	$level_object = new Level();
+	$level_object->hook();
+
+	$member_profile_object = new Member_Profile();
+	$member_profile_object->hook();
+
+	$member_checkout_object = new Member_Checkout();
+	$member_checkout_object->hook();
+
+	$order_object = new Order();
+	$order_object->hook();
 }
+
+add_action( 'init', '\PMPro_Pods\pmpro_pods_init' );
+
 
 return;
 
