@@ -2,6 +2,7 @@
 
 namespace PMPro_Pods\Pods;
 
+use PMPro_Pods\Covered_Objects;
 use PMPro_Pods\PMPro\Helper;
 use PMPro_Pods\Pods\Permissions;
 use Pods\Whatsit;
@@ -38,7 +39,7 @@ class Integration {
 	 * @since TBD
 	 */
 	public function hook() {
-		add_action( 'pods_init', [ $this, 'init' ] );
+		add_action( 'pods_init', [ $this, 'pods_init' ] );
 
 		add_filter( 'pods_admin_setup_add_extend_pod_type', [ $this, 'admin_setup_add_extend_pod_type' ] );
 
