@@ -2,6 +2,7 @@
 
 namespace PMPro_Pods\Pods;
 
+use Pods\Permissions as Pods_Permissions;
 use Pods\Whatsit;
 
 class Permissions {
@@ -84,7 +85,6 @@ class Permissions {
 		);
 	}
 
-
 	/**
 	 * Determine whether membership level is restricted for user on an object.
 	 *
@@ -165,6 +165,13 @@ class Permissions {
 
 		// Restrict if not on the checkout page.
 		if ( ! pmpro_is_checkout() ) {
+			$pods_permissions = tribe( Pods_Permissions::class );
+
+			// Admins can see all available checkout fields on any non-checkout form like edit profile.
+			if ( $pods_permissions->is_user_an_admin( null, $user ) ) {
+				return false;
+			}
+
 			// Skip if the user already has unrestricted access for this membership level.
 			if ( ! $this->is_membership_level_restricted_for_user( $object, $user ) ) {
 				return false;

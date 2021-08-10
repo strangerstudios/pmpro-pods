@@ -2,6 +2,9 @@
 
 namespace PMPro_Pods\PMPro\Objects;
 
+use MemberOrder;
+use WP_User;
+
 /**
  * PMPro Member object hooks for Checkout.
  *
@@ -40,6 +43,8 @@ namespace PMPro_Pods\PMPro\Objects;
  */
 class Member_Checkout {
 
+	private static $saved = false;
+
 	/**
 	 * Add hooks for class.
 	 *
@@ -57,11 +62,15 @@ class Member_Checkout {
 		add_action( 'pmpro_checkout_after_captcha', [ $this, 'pmpro_checkout_after_captcha' ] );
 		add_action( 'pmpro_checkout_before_submit_button', [ $this, 'pmpro_checkout_before_submit_button' ] );
 
-		add_action( 'TBD_TBD_TBD', [ $this, 'TBD_TBD_TBD' ] );
+		add_action( 'pmpro_paypalexpress_session_vars', [ $this, 'pmpro_paypalexpress_session_vars' ] );
+		add_action( 'pmpro_after_checkout', [ $this, 'pmpro_after_checkout' ], 10, 2 );
 
-		// @todo Debug this.
-		add_action( 'pmpro_paypalexpress_session_vars', [ $this, 'pmpro_paypalexpress_session_vars_for_user_fields' ] );
-		add_action( 'pmpro_before_send_to_twocheckout', [ $this, 'pmpro_paypalexpress_session_vars_for_user_fields' ], 10, 0 );
+		add_action( 'pmpro_before_send_to_paypal_standard', [ $this, 'save_checkout_data' ], 10, 2 );
+		add_action( 'pmpro_before_send_to_twocheckout', [ $this, 'save_checkout_data' ], 20, 2 );
+		add_action( 'pmpro_before_send_to_gourl', [ $this, 'save_checkout_data' ], 20, 2 );
+		add_action( 'pmpro_before_send_to_payfast', [ $this, 'save_checkout_data' ], 20, 2 );
+
+		add_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
 	}
 
 	/**
@@ -70,6 +79,26 @@ class Member_Checkout {
 	 * @since TBD
 	 */
 	public function unhook() {
+		remove_action( 'pmpro_checkout_after_level_cost', [ $this, 'pmpro_checkout_after_level_cost' ] );
+		remove_action( 'pmpro_checkout_after_pricing_fields', [ $this, 'pmpro_checkout_after_pricing_fields' ] );
+		remove_action( 'pmpro_checkout_after_username', [ $this, 'pmpro_checkout_after_username' ] );
+		remove_action( 'pmpro_checkout_after_password', [ $this, 'pmpro_checkout_after_password' ] );
+		remove_action( 'pmpro_checkout_after_email', [ $this, 'pmpro_checkout_after_email' ] );
+		remove_action( 'pmpro_checkout_after_billing_fields', [ $this, 'pmpro_checkout_after_billing_fields' ] );
+		remove_action( 'pmpro_checkout_after_payment_information_fields', [ $this, 'pmpro_checkout_after_payment_information_fields' ] );
+		remove_action( 'pmpro_checkout_after_tos_fields', [ $this, 'pmpro_checkout_after_tos_fields' ] );
+		remove_action( 'pmpro_checkout_after_captcha', [ $this, 'pmpro_checkout_after_captcha' ] );
+		remove_action( 'pmpro_checkout_before_submit_button', [ $this, 'pmpro_checkout_before_submit_button' ] );
+
+		remove_action( 'pmpro_paypalexpress_session_vars', [ $this, 'pmpro_paypalexpress_session_vars' ] );
+		remove_action( 'pmpro_after_checkout', [ $this, 'pmpro_after_checkout' ], 10, 2 );
+
+		remove_action( 'pmpro_before_send_to_paypal_standard', [ $this, 'save_checkout_data' ], 10, 2 );
+		remove_action( 'pmpro_before_send_to_twocheckout', [ $this, 'save_checkout_data' ], 20, 2 );
+		remove_action( 'pmpro_before_send_to_gourl', [ $this, 'save_checkout_data' ], 20, 2 );
+		remove_action( 'pmpro_before_send_to_payfast', [ $this, 'save_checkout_data' ], 20, 2 );
+
+		remove_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
 	}
 
 	/**
@@ -80,6 +109,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_level_cost( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_level_cost',
@@ -96,6 +129,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_pricing_fields( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_pricing_fields',
@@ -112,6 +149,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_username( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_username',
@@ -129,6 +170,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_password( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_password',
@@ -146,6 +191,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_email( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_email',
@@ -163,6 +212,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_billing_fields( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_billing_fields',
@@ -179,6 +232,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_payment_information_fields( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_payment_information_fields',
@@ -195,6 +252,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_tos_fields( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_tos_fields',
@@ -211,6 +272,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_after_captcha( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_captcha',
@@ -227,6 +292,10 @@ class Member_Checkout {
 	 * @param WP_User $user The user object.
 	 */
 	public function pmpro_checkout_before_submit_button( $user ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'before_submit_button',
@@ -236,72 +305,120 @@ class Member_Checkout {
 	}
 
 	/**
-	 * Handle saving the submitted fields for the object on the checkout.
+	 * Handle validation of fields.
 	 *
 	 * @since TBD
 	 *
-	 * @param int $user_id The user ID.
+	 * @param bool $is_valid Whether the registration validation passed.
 	 *
-	 * @todo  Figure out the hook.
-	 *
+	 * @return bool Whether the registration validation passed.
 	 */
-	public function TBD_TBD_TBD( $user_id ) {
-		pods_form_save_submitted_fields( 'pmpro_membership_user', $user_id );
+	public function pmpro_registration_checks( $check ) {
+		// Bail if we are not already valid.
+		if ( false === $check ) {
+			return $check;
+		}
+
+		$is_valid = pods_form_validate_submitted_fields( 'pmpro_membership_user' );
+
+		// Check if it passes validation.
+		if ( true === $is_valid ) {
+			return true;
+		}
+
+		global $pmpro_msg, $pmpro_msgt;
+
+		$pmpro_msgt = 'pmpro_error';
+
+		$error_messages = [];
+
+		foreach ( $is_valid as $error ) {
+			$error_messages[] = $error->get_error_message();
+		}
+
+		$error_messages = implode( '<br />', $error_messages );
+
+		if ( ! empty( $pmpro_msg ) ) {
+			$pmpro_msg .= '<br /><br />' . $error_messages;
+		} else {
+			$pmpro_msg = $error_messages;
+		}
+
+		// There were validation errors.
+		return false;
 	}
 
 	/**
-	 * Sessions vars for PayPal Express.
+	 * Handle setting session variables for PayPal Express payments based on field values.
 	 *
 	 * @since TBD
-	 * @todo  Figure this out.
-	 *
 	 */
-	public function pmpro_paypalexpress_session_vars_for_user_fields() {
-		global $pmpro_user_fields;
+	public function pmpro_paypalexpress_session_vars() {
+		// Map the $_POST submitted fields to $_SESSION.
+		if ( empty( $_POST ) ) {
+			return;
+		}
 
-		//save our added fields in session while the user goes off to PayPal
-		if ( ! empty( $pmpro_user_fields ) ) {
-			//cycle through groups
-			foreach ( $pmpro_user_fields as $where => $fields ) {
-				//cycle through fields
-				foreach ( $fields as $field ) {
-					if ( ! pmpro_is_field( $field ) ) {
-						continue;
-					}
+		$fields = pods_form_get_submitted_fields( 'pmpro_membership_user' );
 
-					if ( ! pmpro_check_field_for_level( $field, 'profile', $user_id ) ) {
-						continue;
-					}
+		foreach ( $fields as $field ) {
+			$field_name = $field['name'];
 
-					if ( isset( $_REQUEST[ $field->name ] ) ) {
-						$_SESSION[ $field->name ] = $_REQUEST[ $field->name ];
-					} elseif ( isset( $_FILES[ $field->name ] ) ) {
-						/*
-							We need to save the file somewhere and save values in $_SESSION
-						*/
+			if ( ! isset( $_POST[ 'pods_meta_' . $field_name ] ) ) {
+				continue;
+			}
 
-						//check for a register helper directory in wp-content
-						$upload_dir = wp_upload_dir();
-						$pmprorh_dir = $upload_dir['basedir'] . '/pmpro-register-helper/tmp/';
+			$_SESSION[ 'pods_meta_' . $field_name ] = pods_form_get_submitted_field_value( $field_name );
+		}
+	}
 
-						//create the dir and subdir if needed
-						if ( ! is_dir( $pmprorh_dir ) ) {
-							wp_mkdir_p( $pmprorh_dir );
-						}
+	/**
+	 * Handle session variables from PayPal Express payments and move them back to $_POST data.
+	 *
+	 * @since TBD
+	 *
+	 * @param int         $user_id The user ID.
+	 * @param MemberOrder $morder  The member order object.
+	 */
+	public function pmpro_after_checkout( $user_id, $morder ) {
+		if ( self::$saved ) {
+			return;
+		}
 
-						//move file
-						$new_filename = $pmprorh_dir . basename( $_FILES[ $field->name ]['tmp_name'] );
-						move_uploaded_file( $_FILES[ $field->name ]['tmp_name'], $new_filename );
+		// Map the $_SESSION submitted fields to $_POST and then clean up.
+		if ( ! empty( $_SESSION ) ) {
+			$fields = pods_form_get_submitted_fields( 'pmpro_membership_user' );
 
-						//update location of file
-						$_FILES[ $field->name ]['tmp_name'] = $new_filename;
+			foreach ( $fields as $field ) {
+				$field_name = $field['name'];
 
-						//save file info in session
-						$_SESSION[ $field->name ] = $_FILES[ $field->name ];
-					}
+				$_POST[ 'pods_meta_' . $field_name ] = pods_form_get_submitted_field_value( $field_name, 'session' );
+
+				if ( ! isset( $_SESSION[ 'pods_meta_' . $field_name ] ) ) {
+					unset( $_SESSION[ 'pods_meta_' . $field_name ] );
 				}
 			}
 		}
+
+		$this->save_checkout_data( $user_id, $morder );
+	}
+
+	/**
+	 * Handle saving checkout from PayPal Standard payments and move them back to $_POST data.
+	 *
+	 * @since TBD
+	 *
+	 * @param int              $user_id The user ID.
+	 * @param null|MemberOrder $morder  The member order object.
+	 */
+	public function save_checkout_data( $user_id, $morder = null ) {
+		if ( self::$saved ) {
+			return;
+		}
+
+		pods_form_save_submitted_fields( 'pmpro_membership_user', $user_id );
+
+		self::$saved = true;
 	}
 
 }

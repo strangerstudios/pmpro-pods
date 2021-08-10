@@ -57,7 +57,6 @@ class Member_Profile {
 
 		// @todo Debug this.
 		add_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
-		add_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
 	}
 
 	/**
@@ -77,7 +76,6 @@ class Member_Profile {
 
 		// @todo Debug this.
 		remove_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
-		remove_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
 	}
 
 	/**
@@ -200,19 +198,6 @@ class Member_Profile {
 	 */
 	public function pmpro_add_member_added( $check ) {
 		var_dump( current_filter(), $check );
-
-		return $check;
-	}
-
-	/**
-	 * @todo Debug this.
-	 *
-	 * @param $check
-	 *
-	 * @return mixed
-	 */
-	public function pmpro_registration_checks( $check ) {
-		var_dump( current_filter() );
 
 		return $check;
 	}
