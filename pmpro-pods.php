@@ -325,10 +325,10 @@ function pmpro_pods_registration_checks_for_user_fields( $okay ) {
 		$pmpro_error_fields = array_merge( (array) $pmpro_error_fields, $required );
 
 		if ( count( $required ) == 1 ) {
-			$pmpro_msg  = sprintf( __( 'The %s field is required.', 'pmpro-register-helper' ), implode( ', ', $required_labels ) );
+			$pmpro_msg  = sprintf( __( 'The %s field is required.', 'pmpro-pods' ), implode( ', ', $required_labels ) );
 			$pmpro_msgt = 'pmpro_error';
 		} else {
-			$pmpro_msg  = sprintf( __( 'The %s fields are required.', 'pmpro-register-helper' ), implode( ', ', $required_labels ) );
+			$pmpro_msg  = sprintf( __( 'The %s fields are required.', 'pmpro-pods' ), implode( ', ', $required_labels ) );
 			$pmpro_msgt = 'pmpro_error';
 		}
 
@@ -767,7 +767,7 @@ function pmpro_pods_add_user_fields_to_email( $email ) {
 
 			//add to bottom of email
 			if ( ! empty( $fields ) ) {
-				$email->body .= '<p>' . __( 'Extra Fields:', 'paid-memberships-pro' ) . '<br />';
+				$email->body .= '<p>' . __( 'Extra Fields:', 'pmpro-pods' ) . '<br />';
 				foreach ( $fields as $field ) {
 					if ( ! pmpro_is_field( $field ) ) {
 						continue;
