@@ -154,8 +154,12 @@ class Integration {
 		}
 
 		$meta['storage']                 = 'meta';
+		$meta['label']                   = $type['label'];
 		$meta['table_custom']            = $type['table'];
 		$meta['meta_table_custom']       = $type['meta_table'];
+		$meta['join_custom']             = ! empty( $type['join'] ) ? $type['join'] : '';
+		$meta['orderby_custom']          = ! empty( $type['orderby'] ) ? $type['orderby'] : '';
+		$meta['where_default_custom']    = ! empty( $type['where_default'] ) ? $type['where_default'] : '';
 		$meta['field_id_custom']         = $type['field_id'];
 		$meta['field_index_custom']      = $type['field_index'];
 		$meta['meta_field_id_custom']    = $type['meta_field_id'];
@@ -229,7 +233,7 @@ class Integration {
 		}
 
 		// @todo Core: Support this in the future better with CPT supports compatibility in PMPro.
-		add_filter( 'pods_admin_setup_edit_options_post_type', [ $this, 'admin_setup_edit_options_post_type' ] );
+		//add_filter( 'pods_admin_setup_edit_options_post_type', [ $this, 'admin_setup_edit_options_post_type' ] );
 	}
 
 	/**
