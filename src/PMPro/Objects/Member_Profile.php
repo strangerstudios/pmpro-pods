@@ -56,7 +56,7 @@ class Member_Profile {
 		add_action( 'pmpro_personal_options_update', [ $this, 'pmpro_personal_options_update' ] );
 
 		// @todo Debug this.
-		add_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
+		//add_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Member_Profile {
 		remove_action( 'pmpro_personal_options_update', [ $this, 'pmpro_personal_options_update' ] );
 
 		// @todo Debug this.
-		remove_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
+		//remove_action( 'pmpro_add_member_added', [ $this, 'pmpro_add_member_added' ] );
 	}
 
 	/**
@@ -197,8 +197,6 @@ class Member_Profile {
 	 * @return mixed
 	 */
 	public function pmpro_add_member_added( $check ) {
-		var_dump( current_filter(), $check );
-
 		return $check;
 	}
 
