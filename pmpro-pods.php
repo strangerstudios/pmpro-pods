@@ -2,8 +2,8 @@
 /*
 Plugin Name: Paid Memberships Pro - Pods Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/pods/
-Description: Pods integration for Paid Memberships Pro
-Version: 0.1
+Description: ntegrates with the Pods Framework to allow adding groups of fields to many areas of Paid Membership Pro including Member Profiles, the Checkout page, the Membership Level forms, and the Order forms.
+Version: 1.0
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-pods
@@ -54,7 +54,31 @@ spl_autoload_register( '\PMPro_Pods\pmpro_pods_autoload' );
  * @since TBD
  */
 function pmpro_pods_init() {
-	if ( ! function_exists( 'pmpro_getAllLevels' ) ) {
+	if ( ! defined( 'PMPRO_VERSION' ) || version_compare( PMPRO_VERSION, '2.6', '<=' ) ) {
+		add_action( 'admin_notices', static function() {
+			echo '<div class="notice notice-error"><p>';
+			echo sprintf(
+				esc_html__( 'The %1$s requires %2$s installed and activated to be used.', 'pmpro-pods' ),
+				'<strong>Paid Memberships Pro - Pods Add On</strong>',
+				'<a href="' . esc_url( admin_url( 'plugin-install.php?s=Paid+Memberships+Pro&tab=search&type=term' ) ) . '">Paid Memberships Pro</a> 2.6+'
+			);
+			echo '</p></div>';
+		} );
+
+		return;
+	}
+
+	if ( ! defined( 'PODS_VERSION' ) || version_compare( PODS_VERSION, '2.8-b-1', '<=' ) ) {
+		add_action( 'admin_notices', static function() {
+			echo '<div class="notice notice-error"><p>';
+			echo sprintf(
+				esc_html__( 'The %1$s requires %2$s installed and activated to be used.', 'pmpro-pods' ),
+				'<strong>Paid Memberships Pro - Pods Add On</strong>',
+				'<a href="' . esc_url( admin_url( 'plugin-install.php?s=Pods+Framework&tab=search&type=term' ) ) . '">Pods Framework</a> 2.8+'
+			);
+			echo '</p></div>';
+		} );
+
 		return;
 	}
 

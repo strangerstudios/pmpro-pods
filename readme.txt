@@ -2,10 +2,13 @@
 Contributors: strangerstudios, sc0ttkclark
 Tags: paid memberships pro, pods
 Requires at least: 5.5
-Tested up to: 5.7
-Stable tag: 0.1
+Tested up to: 5.8
+Requires PHP: 5.6
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Pods integration for Paid Memberships Pro
+ntegrates with the Pods Framework to allow adding groups of fields to many areas of Paid Membership Pro including Member Profiles, the Checkout page, the Membership Level forms, and the Order forms.
 
 == Description ==
 This Add On offers integration for the Pods Framework to be able to extend Paid Memberships Pro forms including:
@@ -18,7 +21,7 @@ Additional functionality includes the ability to extend and add numerous groups 
 * Membership Levels
 * Membership Orders
 
-*Requires Pods Framework version 2.8 or above*
+*Requires Pods Framework 2.8+ and Paid Memberships Pro 2.6+*
 
 == Installation ==
 
