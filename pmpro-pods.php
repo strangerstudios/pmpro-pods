@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Paid Memberships Pro - Pods Add On
-Plugin URI: https://www.paidmembershipspro.com/add-ons/pods/
-Description: ntegrates with the Pods Framework to allow adding groups of fields to many areas of Paid Membership Pro including Member Profiles, the Checkout page, the Membership Level forms, and the Order forms.
+Plugin URI: https://www.paidmembershipspro.com/add-ons/pods-integration/
+Description: Integrates Paid Memberships Pro with the Pods Framework to add groups of fields to many areas of your membership site including Member Profiles, the Membership Checkout page, and admin screens including Membership Levels and Orders.
 Version: 1.0
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com/
