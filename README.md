@@ -1,4 +1,4 @@
-![](pmpro-pods-banner.jpg)
+![](pmpro-pods-banner.png)
 
 
 # [Paid Memberships Pro - Pods Integration](https://www.paidmembershipspro.com/add-ons/pods-integration/) #
