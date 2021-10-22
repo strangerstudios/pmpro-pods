@@ -25,6 +25,8 @@ Each group and field can have custom membership level requirements. This means t
 
 *Requires Pods Framework 2.8+ and Paid Memberships Pro 2.6+*
 
+https://youtu.be/KSVVnkv5444
+
 = Add Groups and Fields with the Pods Framework =
 
 This plugin adds three new options to the Pods Framework to the Add New Pod screen which allows you to choose from PMPro Member, PMPro Order, and PMPro Membership Level.
