@@ -8,20 +8,48 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-ntegrates with the Pods Framework to allow adding groups of fields to many areas of Paid Membership Pro including Member Profiles, the Checkout page, the Membership Level forms, and the Order forms.
+Integrates Paid Memberships Pro with the [Pods Framework](https://pods.io/) to add groups of fields to many areas of your membership site including Member Profiles, the Membership Checkout page, and admin screens including Membership Levels and Orders.
 
 == Description ==
-This Add On offers integration for the Pods Framework to be able to extend Paid Memberships Pro forms including:
 
-* Member Profile pages
-* Checkout pages
+= Integrate Paid Memberships Pro and Pods to Extend User, Checkout and Admin Fields =
 
-Additional functionality includes the ability to extend and add numerous groups and fields to:
+This integration allows you to create and manage groups of fields for many areas in Paid Membership Pro, including:
 
-* Membership Levels
-* Membership Orders
+* User and Member profiles on the frontend and within the WordPress admin’s Edit User screen.
+* Add fields to the Membership Checkout page as an alternative to our Register Helper Add On. Fields added to the Membership Checkout page can be added in 10 unique locations.
+* Add fields to the Add/Edit Membership Level page in the WordPress admin.
+* Add fields to the Add/Edit Orders page in the WordPress admin.
+
+Each group and field can have custom membership level requirements. This means that only users of a specific membership level or a user completing checkout for that membership level can view and complete protected fields.
 
 *Requires Pods Framework 2.8+ and Paid Memberships Pro 2.6+*
+
+https://youtu.be/KSVVnkv5444
+
+= Add Groups and Fields with the Pods Framework =
+
+This plugin adds three new options to the Pods Framework to the Add New Pod screen which allows you to choose from PMPro Member, PMPro Order, and PMPro Membership Level.
+
+= Member Profile and Checkout Fields =
+
+You can extend the Member object and choose to show groups of fields on the Member Profile page, the WP Dashboard User Profile form, and/or on the Checkout form itself.
+
+= Membership Level Fields =
+
+Have you ever wanted to store extra information about Membership Levels themselves, or add fields that can be referenced in your theme when displaying them? For the first time ever in a PMPro integration — you can now extend Membership Levels with their own custom groups and fields.
+
+= Membership Order Fields =
+
+Now you can track completely separate information per order like Shipping Tracking numbers for swag or anything you can dream of. For the first time ever in a PMPro integration — you can now extend Orders with their own custom groups and fields.
+
+= Pods Block Integration =
+
+Use any of the PMPro objects in your Pods Blocks to unlock the advanced templating you’ve been dreaming of for PMPro.
+
+= Advanced: Pods Blocks Query Customization =
+
+You can query your PMPro objects with Pods Blocks (used in "Order By" and the "Where" block settings) by [following the short guide in our documentation page](https://www.paidmembershipspro.com/add-ons/pods-integration/#query).
 
 == Installation ==
 
@@ -35,7 +63,7 @@ Additional functionality includes the ability to extend and add numerous groups 
 
 Please post it in the GitHub issue tracker here: [https://github.com/strangerstudios/pmpro-pods/issues](https://github.com/strangerstudios/pmpro-pods/issues)
 
-For immediate help, also post to our premium support site at [http://www.paidmembershipspro.com](https://www.paidmembershipspro.com) for more documentation and our support forums.
+For immediate help, also post to our premium support site at [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com) for more documentation and our support forums.
 
 = I need help installing, configuring, or customizing the plugin. =
 
@@ -43,10 +71,19 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 
 == Screenshots ==
 
-1. TBD
-2. TBD
-3. TBD
-4. TBD
+1. Add New Pod: PMPro Member, PMPro Order, and PMPro Membership Level
+2. Edit PMPro Member Pod
+3. Edit PMPro Member Group Options
+4. Edit PMPro Member Field Options
+5. Custom field on Edit User screen in the WordPress admin
+6. Custom field on the Member Profile Edit page (frontend)
+7. Custom field on the Membership Checkout form
+8. Edit PMPro Membership Level Pod
+9. Edit PMPro Membership Level Group Options
+10. Custom field on the Edit Membership Level page in the WordPress admin
+11. Edit PMPro Order Pod
+12. Custom field on the Edit Order form
+13. Use Pods Blocks to display PMPro information in new ways
 
 == Changelog ==
 
