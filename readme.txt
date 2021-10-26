@@ -25,7 +25,7 @@ Each group and field can have custom membership level requirements. This means t
 
 *Requires Pods Framework 2.8+ and Paid Memberships Pro 2.6+*
 
-https://youtu.be/KSVVnkv5444
+https://youtu.be/oNUtPO2K0L4
 
 = Add Groups and Fields with the Pods Framework =
 
