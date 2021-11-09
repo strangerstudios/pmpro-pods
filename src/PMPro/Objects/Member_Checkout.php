@@ -113,7 +113,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_level_cost',
 			'render'        => 'div-rows',
@@ -133,7 +133,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_pricing_fields',
 			'render'        => 'div-rows',
@@ -153,7 +153,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_username',
 			'render'        => 'div-rows',
@@ -174,7 +174,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_password',
 			'render'        => 'div-rows',
@@ -195,7 +195,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_email',
 			'render'        => 'div-rows',
@@ -216,7 +216,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_billing_fields',
 			'render'        => 'div-rows',
@@ -236,7 +236,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_payment_information_fields',
 			'render'        => 'div-rows',
@@ -256,7 +256,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_tos_fields',
 			'render'        => 'div-rows',
@@ -276,7 +276,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_captcha',
 			'render'        => 'div-rows',
@@ -296,7 +296,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'before_submit_button',
 			'render'        => 'div-rows',
