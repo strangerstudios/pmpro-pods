@@ -212,7 +212,7 @@ class Integration {
 	 * @since TBD
 	 */
 	public function form_render_fields_group_pre() {
-		wp_enqueue_style( 'pmpro-pods', plugin_dir_url( __FILE__ ) . 'assets/pmpro-pods.css', [], '1.0' );
+		wp_enqueue_style( 'pmpro-pods', PMPRO_PODS_URL . 'assets/pmpro-pods.css', [], '1.0' );
 	}
 
 	/**

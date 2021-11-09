@@ -19,6 +19,8 @@ use PMPro_Pods\Pods\Integration;
 use PMPro_Pods\Pods\Meta_Compatibility;
 use PMPro_Pods\Pods\Permissions;
 
+define( 'PMPRO_PODS_URL', plugin_dir_url( __FILE__ ) );
+
 /**
  * Autoload the classes for our namespace.
  *
