@@ -47,6 +47,7 @@ class Member_Profile {
 	 */
 	public function hook() {
 		add_action( 'pmpro_show_user_profile', [ $this, 'pmpro_show_user_profile' ] );
+		add_action( 'pmpro_account_bullets_bottom', [ $this, 'pmpro_account_bullets_bottom' ] );
 		add_action( 'pmpro_add_member_fields', [ $this, 'pmpro_add_member_fields' ] );
 		add_action( 'show_user_profile', [ $this, 'show_user_profile' ] );
 		add_action( 'edit_user_profile', [ $this, 'edit_user_profile' ] );
@@ -93,6 +94,49 @@ class Member_Profile {
 			'heading'       => 'h3',
 			'separator'     => 'off',
 		] );
+	}
+
+	/**
+	 * Render the fields for the frontend user profile form.
+	 *
+	 * @since TBD
+	 */
+	public function pmpro_account_bullets_bottom() {
+		$item_id = get_current_user_id();
+
+		$pod = pods( 'pmpro_membership_user', $item_id );
+
+		$groups = pods_form_get_visible_objects( $pod, [
+			'section_field' => 'pmpro_section_member_profile',
+			'section'       => 'show_on_account',
+			'return_type'   => 'group',
+		] );
+
+		foreach ( $groups as $group ) {
+			$fields = $group->get_fields();
+
+			if ( ! empty( $group['pmpro_account_display_group_label'] ) ) {
+				printf(
+					'</ul><p>%s</p><ul>',
+					esc_html( $group['label'] )
+				);
+			}
+
+			foreach ( $fields as $field ) {
+				$value = $pod->display( $field['name'] );
+
+				// Skip empty values.
+				if ( empty( $value ) ) {
+					continue;
+				}
+
+				printf(
+					'<li><strong>%1$s:</strong> %2$s</li>',
+					esc_html( $field['label'] ),
+					$value
+				);
+			}
+		}
 	}
 
 	/**

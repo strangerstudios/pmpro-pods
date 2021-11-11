@@ -497,14 +497,28 @@ class Integration {
 				'help'             => __( 'All available fields in this group will show in the sections chosen.', 'pmpro-pods' ),
 				'type'             => 'pick',
 				'data'             => [
-					'show_on_front' => __( 'Front-facing Profile', 'pmpro-pods' ),
-					'show_on_admin' => __( 'WP Dashboard Profile', 'pmpro-pods' ),
+					'show_on_account' => __( 'Display field values on Account Details Page', 'pmpro-pods' ),
+					'show_on_front'   => __( 'Front-facing Profile Edit', 'pmpro-pods' ),
+					'show_on_admin'   => __( 'WP Dashboard Profile Edit', 'pmpro-pods' ),
 				],
 				'default'          => [
+					'show_on_account',
 					'show_on_front',
 					'show_on_admin',
 				],
 				'pick_format_type' => 'multi',
+			];
+
+			// @todo Fix the pick multi checkboxes dependency issue in Pods core, show_on_account isn't getting picked up here.
+			$options['pmpro']['pmpro_account_display_group_label'] = [
+				'name'       => 'pmpro_account_display_group_label',
+				'label'      => __( 'Display Group Label above fields on Account Details', 'pmpro-pods' ),
+				'help'       => __( 'If enabled, this will display the group label above the fields on Account Details. When disabled, only the field values will be displayed without separation.', 'pmpro-pods' ),
+				'type'       => 'boolean',
+				'default'    => 0,
+				'depends-on' => [
+					'pmpro_section_member_profile' => 'show_on_account',
+				],
 			];
 
 			$options['pmpro']['pmpro_section_checkout'] = [
