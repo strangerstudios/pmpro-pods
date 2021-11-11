@@ -7,7 +7,7 @@ namespace PMPro_Pods\Pods;
  *
  * We use this custom meta type to differentiate between PMPro config vs User config in Pods.
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Meta_Compatibility {
@@ -15,7 +15,7 @@ class Meta_Compatibility {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		global $wpdb;
@@ -32,7 +32,7 @@ class Meta_Compatibility {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		global $wpdb;
@@ -49,7 +49,7 @@ class Meta_Compatibility {
 	/**
 	 * Handle get_metadata fallback for PMPro types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param mixed  $value     The value to return, either a single metadata value or an array
 	 *                          of values depending on the value of `$single`. Default null.
@@ -67,7 +67,7 @@ class Meta_Compatibility {
 	/**
 	 * Handle add_metadata fallback for PMPro types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param null|bool $check      Whether to allow adding metadata for the given type.
 	 * @param int       $object_id  ID of the object metadata is for.
@@ -84,7 +84,7 @@ class Meta_Compatibility {
 	/**
 	 * Handle update_metadata fallback for PMPro types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param null|bool $check      Whether to allow updating metadata for the given type.
 	 * @param int       $object_id  ID of the object metadata is for.
@@ -103,7 +103,7 @@ class Meta_Compatibility {
 	/**
 	 * Handle delete_metadata fallback for PMPro types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param null|bool $delete     Whether to allow metadata deletion of the given type.
 	 * @param int       $object_id  ID of the object metadata is for.
