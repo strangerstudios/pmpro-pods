@@ -10,7 +10,7 @@ use Pods\Whatsit;
 /**
  * Integration functionality for Pods.
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Integration {
@@ -18,7 +18,7 @@ class Integration {
 	/**
 	 * List of covered pod types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @var array[]
 	 */
@@ -27,7 +27,7 @@ class Integration {
 	/**
 	 * Set up the object properties needed.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		$this->pod_types = Covered_Objects::get_pod_types();
@@ -36,7 +36,7 @@ class Integration {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pods_init', [ $this, 'pods_init' ] );
@@ -67,7 +67,7 @@ class Integration {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pods_init', [ $this, 'pods_init' ] );
@@ -92,7 +92,7 @@ class Integration {
 	/**
 	 * Add our covered types to be extended on the Add New Pod Wizard screen.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array $pod_types The list of available pod types to extend.
 	 *
@@ -117,7 +117,7 @@ class Integration {
 	/**
 	 * Override the Pod label for a covered type to always match the label we have defined.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array         $post_data The post data to be saved for the Pod.
 	 * @param array|Whatsit $pod       The Pod data.
@@ -139,7 +139,7 @@ class Integration {
 	/**
 	 * Override the Pod config for a covered type to always match what we have defined.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array         $meta The post meta to be saved for the Pod.
 	 * @param array|Whatsit $pod  The Pod data.
@@ -176,7 +176,7 @@ class Integration {
 	/**
 	 * Override the default group title for a covered type to always match what we have defined.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param string        $title The default group title.
 	 * @param array|Whatsit $pod   The Pod data.
@@ -209,7 +209,7 @@ class Integration {
 	/**
 	 * Add our custom PMPro Pods CSS on the PMPro screens.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function form_render_fields_group_pre() {
 		wp_enqueue_style( 'pmpro-pods', PMPRO_PODS_URL . 'assets/pmpro-pods.css', [], '1.0' );
@@ -218,7 +218,7 @@ class Integration {
 	/**
 	 * Set up things after Pods has been initialized.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function pods_init() {
 		pods_register_related_object( 'pmpro_membership_level', __( 'PMPro Membership Level', 'pmpro-pods' ), [
@@ -239,7 +239,7 @@ class Integration {
 	/**
 	 * Allow hooking in to support saving for custom object types.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int|string|false $object_id   The object ID after saving, false if not saved.
 	 * @param string           $object_type The custom object type.
@@ -442,7 +442,7 @@ class Integration {
 	/**
 	 * Allow hooking in to support saving meta using the meta fallback.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param bool   $use_meta_fallback Whether to support saving meta using the meta fallback.
 	 * @param string $object_type       The custom object type.
@@ -462,7 +462,7 @@ class Integration {
 	/**
 	 * Add PMPro tab to groups.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array $tabs List of group tabs.
 	 *
@@ -477,7 +477,7 @@ class Integration {
 	/**
 	 * Add PMPro group options to the PMPro group tab.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array   $options The list of group options.
 	 * @param Whatsit $pod     The Pod object.
@@ -601,7 +601,7 @@ class Integration {
 	/**
 	 * Add PMPro tab to fields.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array $tabs List of field tabs.
 	 *
@@ -616,7 +616,7 @@ class Integration {
 	/**
 	 * Add PMPro field options to the PMPro field tab.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array   $options The list of field options.
 	 * @param Whatsit $pod     The Pod object.
@@ -659,7 +659,7 @@ class Integration {
 	/**
 	 * Add PMPro Pod options to the PMPro Pod tab.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array   $options The list of Pod options.
 	 * @param Whatsit $pod     The Pod object.

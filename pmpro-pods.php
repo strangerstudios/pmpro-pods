@@ -24,7 +24,7 @@ define( 'PMPRO_PODS_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Autoload the classes for our namespace.
  *
- * @since TBD
+ * @since 1.0.0
  *
  * @param string $class The class name to load.
  */
@@ -53,7 +53,7 @@ spl_autoload_register( '\PMPro_Pods\pmpro_pods_autoload' );
 /**
  * Handle init of the plugin hooks.
  *
- * @since TBD
+ * @since 1.0.0
  */
 function pmpro_pods_init() {
 	if ( ! defined( 'PMPRO_VERSION' ) || version_compare( PMPRO_VERSION, '2.6', '<=' ) ) {

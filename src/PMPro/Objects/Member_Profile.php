@@ -35,7 +35,7 @@ namespace PMPro_Pods\PMPro\Objects;
  *        update_user_meta( $user_id, 'meta_key', 'value' );
  *        delete_user_meta( $user_id, 'meta_key' );
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Member_Profile {
@@ -43,7 +43,7 @@ class Member_Profile {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pmpro_show_user_profile', [ $this, 'pmpro_show_user_profile' ] );
@@ -63,7 +63,7 @@ class Member_Profile {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pmpro_show_user_profile', [ $this, 'pmpro_show_user_profile' ] );
@@ -82,7 +82,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the frontend user profile form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -142,7 +142,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the frontend user registration form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -164,7 +164,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the admin user profile form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -179,7 +179,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the admin user edit form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -194,7 +194,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the admin member profile section when saving your own profile.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */
@@ -208,7 +208,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the admin member profile section when editing another user.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */
@@ -222,7 +222,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the front member profile section when saving you own profile.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */

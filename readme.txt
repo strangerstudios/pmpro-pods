@@ -87,5 +87,8 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 
 == Changelog ==
 
+= 1.0.1 - TBD, 2021 =
+* Prevent PHP notices on checkout page when logged out. (@sc0ttkclark)
+
 = 1.0 - October 26th, 2021 =
 * Initial release

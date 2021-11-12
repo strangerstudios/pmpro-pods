@@ -22,7 +22,7 @@ namespace PMPro_Pods\PMPro\Objects;
  *		update_pmpro_membership_order_meta( $order_id, 'meta_key', 'value' );
  *		delete_pmpro_membership_order_meta( $order_id, 'meta_key' );
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Order {
@@ -30,7 +30,7 @@ class Order {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pmpro_after_order_settings_table', [ $this, 'pmpro_after_order_settings_table' ] );
@@ -41,7 +41,7 @@ class Order {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pmpro_after_order_settings_table', [ $this, 'pmpro_after_order_settings_table' ] );
@@ -52,7 +52,7 @@ class Order {
 	/**
 	 * Render the fields for the order form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $order The order object.
 	 */
@@ -65,7 +65,7 @@ class Order {
 	/**
 	 * Handle saving the submitted fields for the object when adding an order.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $order The order object.
 	 */
@@ -76,7 +76,7 @@ class Order {
 	/**
 	 * Handle saving the submitted fields for the object when editing an order.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $order The order object.
 	 */

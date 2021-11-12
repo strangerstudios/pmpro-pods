@@ -20,7 +20,7 @@ class Permissions {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_filter( 'pods_permissions_user_has_permission', [ $this, 'user_has_permission' ], 10, 3 );
@@ -30,7 +30,7 @@ class Permissions {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_filter( 'pods_permissions_user_has_permission', [ $this, 'user_has_permission' ] );
@@ -40,7 +40,7 @@ class Permissions {
 	/**
 	 * Filter whether a user has permission to an object based on the PMPro restrictions set.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param bool             $user_has_permission Whether a user has permission to an object.
 	 * @param array|Whatsit    $object              The object data.
@@ -67,7 +67,7 @@ class Permissions {
 	/**
 	 * Filter whether permissions are restricted for an object based on PMPro restrictions set.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param bool          $are_permissions_restricted Whether the permissions are restricted for an object.
 	 * @param array|Whatsit $object                     The object data.
@@ -88,7 +88,7 @@ class Permissions {
 	/**
 	 * Determine whether membership level is restricted for user on an object.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array|Whatsit $object The object data.
 	 * @param WP_User       $user   The user ID or object (default: current user).
@@ -113,7 +113,7 @@ class Permissions {
 	/**
 	 * Get the list of required membership levels.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array|Whatsit $object The object data.
 	 *
@@ -134,7 +134,7 @@ class Permissions {
 	/**
 	 * Determine whether checkout membership level is restricted on an object.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array|Whatsit $object The object data.
 	 *
@@ -148,7 +148,7 @@ class Permissions {
 	/**
 	 * Determine whether checkout membership level is restricted for a user on an object.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array|Whatsit $object The object data.
 	 * @param WP_User       $user   The user ID or object (default: current user).
@@ -199,7 +199,7 @@ class Permissions {
 	/**
 	 * Get the list of checkout membership levels if restricted.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param array|Whatsit $object The object data.
 	 *
