@@ -5,7 +5,7 @@ namespace PMPro_Pods\PMPro;
 /**
  * Helper functionality for interfacing with PMPro.
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Helper {
@@ -13,7 +13,7 @@ class Helper {
 	/**
 	 * Get the list of all level names keyed by ID.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @return string[] List of all level names keyed by ID.
 	 */

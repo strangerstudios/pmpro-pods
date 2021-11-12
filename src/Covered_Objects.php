@@ -5,7 +5,7 @@ namespace PMPro_Pods;
 /**
  * Functionality for covered PMPro object types.
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Covered_Objects {
@@ -13,7 +13,7 @@ class Covered_Objects {
 	/**
 	 * Get the list of PMPro integration types and their configurations.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @return array[] The list of PMPro integration types and their configurations.
 	 */

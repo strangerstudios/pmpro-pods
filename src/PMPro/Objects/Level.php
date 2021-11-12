@@ -24,7 +24,7 @@ namespace PMPro_Pods\PMPro\Objects;
  *        update_pmpro_membership_level_meta( $level_id, 'meta_key', 'value' );
  *        delete_pmpro_membership_level_meta( $level_id, 'meta_key' );
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Level {
@@ -32,7 +32,7 @@ class Level {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pmpro_membership_level_after_billing_details_settings', [ $this, 'pmpro_membership_level_after_billing_details_settings' ] );
@@ -44,7 +44,7 @@ class Level {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pmpro_membership_level_after_billing_details_settings', [ $this, 'pmpro_membership_level_after_billing_details_settings' ] );
@@ -56,7 +56,7 @@ class Level {
 	/**
 	 * Render the fields after billing details settings section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $level The membership level object.
 	 */
@@ -70,7 +70,7 @@ class Level {
 	/**
 	 * Render the fields after other settings section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $level The membership level object.
 	 */
@@ -84,7 +84,7 @@ class Level {
 	/**
 	 * Render the fields after content settings section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param object $level The membership level object.
 	 */
@@ -98,7 +98,7 @@ class Level {
 	/**
 	 * Handle saving the submitted fields for the object.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $level_id The level ID.
 	 */

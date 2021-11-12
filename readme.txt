@@ -4,7 +4,7 @@ Tags: paid memberships pro, pods
 Requires at least: 5.5
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,10 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 13. Use Pods Blocks to display PMPro information in new ways
 
 == Changelog ==
+
+= 1.0.1 - November 12th, 2021 =
+* Added support for showing PMPro Member fields on the Membership Account page under the Account Details area. #5 (@sc0ttkclark)
+* Prevent PHP notices on checkout page when logged out. (@sc0ttkclark)
 
 = 1.0 - October 26th, 2021 =
 * Initial release

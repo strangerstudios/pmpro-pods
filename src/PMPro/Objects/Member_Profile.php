@@ -35,7 +35,7 @@ namespace PMPro_Pods\PMPro\Objects;
  *        update_user_meta( $user_id, 'meta_key', 'value' );
  *        delete_user_meta( $user_id, 'meta_key' );
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Member_Profile {
@@ -43,10 +43,11 @@ class Member_Profile {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pmpro_show_user_profile', [ $this, 'pmpro_show_user_profile' ] );
+		add_action( 'pmpro_account_bullets_bottom', [ $this, 'pmpro_account_bullets_bottom' ] );
 		add_action( 'pmpro_add_member_fields', [ $this, 'pmpro_add_member_fields' ] );
 		add_action( 'show_user_profile', [ $this, 'show_user_profile' ] );
 		add_action( 'edit_user_profile', [ $this, 'edit_user_profile' ] );
@@ -62,7 +63,7 @@ class Member_Profile {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pmpro_show_user_profile', [ $this, 'pmpro_show_user_profile' ] );
@@ -81,7 +82,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the frontend user profile form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -96,9 +97,57 @@ class Member_Profile {
 	}
 
 	/**
-	 * Render the fields for the frontend user registration form.
+	 * Render the fields for the frontend user profile form.
 	 *
 	 * @since TBD
+	 */
+	public function pmpro_account_bullets_bottom() {
+		$item_id = get_current_user_id();
+
+		$pod = pods( 'pmpro_membership_user', $item_id );
+
+		// Check if Pod is valid and the item exists.
+		if ( ! $pod->valid() || ! $pod->exists() ) {
+			return;
+		}
+
+		$groups = pods_form_get_visible_objects( $pod, [
+			'section_field' => 'pmpro_section_member_profile',
+			'section'       => 'show_on_account',
+			'return_type'   => 'group',
+		] );
+
+		foreach ( $groups as $group ) {
+			$fields = $group->get_fields();
+
+			if ( ! empty( $group['pmpro_account_display_group_label'] ) ) {
+				printf(
+					'</ul><p>%s</p><ul>',
+					esc_html( $group['label'] )
+				);
+			}
+
+			foreach ( $fields as $field ) {
+				$value = $pod->display( $field['name'] );
+
+				// Skip empty values.
+				if ( empty( $value ) ) {
+					continue;
+				}
+
+				printf(
+					'<li><strong>%1$s:</strong> %2$s</li>',
+					esc_html( $field['label'] ),
+					$value
+				);
+			}
+		}
+	}
+
+	/**
+	 * Render the fields for the frontend user registration form.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -120,7 +169,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the admin user profile form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -135,7 +184,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the admin user edit form.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -150,7 +199,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the admin member profile section when saving your own profile.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */
@@ -164,7 +213,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the admin member profile section when editing another user.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */
@@ -178,7 +227,7 @@ class Member_Profile {
 	/**
 	 * Handle saving the submitted fields for the object on the front member profile section when saving you own profile.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id The user ID.
 	 */

@@ -38,7 +38,7 @@ use WP_User;
  *        update_user_meta( $user_id, 'meta_key', 'value' );
  *        delete_user_meta( $user_id, 'meta_key' );
  *
- * @since   TBD
+ * @since   1.0.0
  * @package PMPro_Pods
  */
 class Member_Checkout {
@@ -48,7 +48,7 @@ class Member_Checkout {
 	/**
 	 * Add hooks for class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function hook() {
 		add_action( 'pmpro_checkout_after_level_cost', [ $this, 'pmpro_checkout_after_level_cost' ] );
@@ -76,7 +76,7 @@ class Member_Checkout {
 	/**
 	 * Remove hooks from class.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function unhook() {
 		remove_action( 'pmpro_checkout_after_level_cost', [ $this, 'pmpro_checkout_after_level_cost' ] );
@@ -104,7 +104,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after level cost section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -113,7 +113,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_level_cost',
 			'render'        => 'div-rows',
@@ -124,7 +124,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after pricing fields section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -133,7 +133,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_pricing_fields',
 			'render'        => 'div-rows',
@@ -144,7 +144,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after username section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -153,7 +153,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_username',
 			'render'        => 'div-rows',
@@ -165,7 +165,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after password section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -174,7 +174,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_password',
 			'render'        => 'div-rows',
@@ -186,7 +186,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after email section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -195,7 +195,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_email',
 			'render'        => 'div-rows',
@@ -207,7 +207,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after billing fields section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -216,7 +216,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_billing_fields',
 			'render'        => 'div-rows',
@@ -227,7 +227,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after payment information fields section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -236,7 +236,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_payment_information_fields',
 			'render'        => 'div-rows',
@@ -247,7 +247,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after TOS fields section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -256,7 +256,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_tos_fields',
 			'render'        => 'div-rows',
@@ -267,7 +267,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the after captcha section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -276,7 +276,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_captcha',
 			'render'        => 'div-rows',
@@ -287,7 +287,7 @@ class Member_Checkout {
 	/**
 	 * Render the fields for the checkout page in the before submit button section.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param WP_User $user The user object.
 	 */
@@ -296,7 +296,7 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'before_submit_button',
 			'render'        => 'div-rows',
@@ -307,7 +307,7 @@ class Member_Checkout {
 	/**
 	 * Handle validation of fields.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param bool $is_valid Whether the registration validation passed.
 	 *
@@ -351,7 +351,7 @@ class Member_Checkout {
 	/**
 	 * Handle setting session variables for PayPal Express payments based on field values.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 */
 	public function pmpro_paypalexpress_session_vars() {
 		// Map the $_POST submitted fields to $_SESSION.
@@ -375,7 +375,7 @@ class Member_Checkout {
 	/**
 	 * Handle session variables from PayPal Express payments and move them back to $_POST data.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int         $user_id The user ID.
 	 * @param MemberOrder $morder  The member order object.
@@ -406,7 +406,7 @@ class Member_Checkout {
 	/**
 	 * Handle saving checkout from PayPal Standard payments and move them back to $_POST data.
 	 *
-	 * @since TBD
+	 * @since 1.0.0
 	 *
 	 * @param int              $user_id The user ID.
 	 * @param null|MemberOrder $morder  The member order object.
