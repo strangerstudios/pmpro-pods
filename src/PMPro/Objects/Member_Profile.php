@@ -106,6 +106,11 @@ class Member_Profile {
 
 		$pod = pods( 'pmpro_membership_user', $item_id );
 
+		// Check if Pod is valid and the item exists.
+		if ( ! $pod->valid() || ! $pod->exists() ) {
+			return;
+		}
+
 		$groups = pods_form_get_visible_objects( $pod, [
 			'section_field' => 'pmpro_section_member_profile',
 			'section'       => 'show_on_account',
