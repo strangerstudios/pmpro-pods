@@ -538,6 +538,10 @@ class Integration {
 					'after_password'                   => __( 'After Password (no heading)', 'pmpro-pods' ),
 					// After Password (no heading) [after_password]
 					'after_email'                      => __( 'After Email (no heading)', 'pmpro-pods' ),
+					// After User
+					'after_user_fields'                => __( 'After User Fields', 'pmpro-pods' ),
+					// After Checkout Boxes [after_user_fields]
+					'boxes'                            => __( 'Checkout Boxes', 'pmpro-pods' ),
 					// After Email (no heading) [after_email]
 					'after_billing_fields'             => __( 'After Billing Fields', 'pmpro-pods' ),
 					// After Billing Fields [after_billing_fields]

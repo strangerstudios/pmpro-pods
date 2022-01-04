@@ -56,6 +56,8 @@ class Member_Checkout {
 		add_action( 'pmpro_checkout_after_username', [ $this, 'pmpro_checkout_after_username' ] );
 		add_action( 'pmpro_checkout_after_password', [ $this, 'pmpro_checkout_after_password' ] );
 		add_action( 'pmpro_checkout_after_email', [ $this, 'pmpro_checkout_after_email' ] );
+		add_action( 'pmpro_checkout_after_user_fields', [ $this, 'pmpro_checkout_after_user_fields' ] );
+		add_action( 'pmpro_checkout_boxes', [ $this, 'pmpro_checkout_boxes' ] );
 		add_action( 'pmpro_checkout_after_billing_fields', [ $this, 'pmpro_checkout_after_billing_fields' ] );
 		add_action( 'pmpro_checkout_after_payment_information_fields', [ $this, 'pmpro_checkout_after_payment_information_fields' ] );
 		add_action( 'pmpro_checkout_after_tos_fields', [ $this, 'pmpro_checkout_after_tos_fields' ] );
@@ -84,6 +86,8 @@ class Member_Checkout {
 		remove_action( 'pmpro_checkout_after_username', [ $this, 'pmpro_checkout_after_username' ] );
 		remove_action( 'pmpro_checkout_after_password', [ $this, 'pmpro_checkout_after_password' ] );
 		remove_action( 'pmpro_checkout_after_email', [ $this, 'pmpro_checkout_after_email' ] );
+		remove_action( 'pmpro_checkout_after_user_fields', [ $this, 'pmpro_checkout_after_user_fields' ] );
+		remove_action( 'pmpro_checkout_boxes', [ $this, 'pmpro_checkout_boxes' ] );
 		remove_action( 'pmpro_checkout_after_billing_fields', [ $this, 'pmpro_checkout_after_billing_fields' ] );
 		remove_action( 'pmpro_checkout_after_payment_information_fields', [ $this, 'pmpro_checkout_after_payment_information_fields' ] );
 		remove_action( 'pmpro_checkout_after_tos_fields', [ $this, 'pmpro_checkout_after_tos_fields' ] );
@@ -106,18 +110,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_level_cost( $user ) {
+	public function pmpro_checkout_after_level_cost( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_level_cost',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_level_cost',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -126,18 +138,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_pricing_fields( $user ) {
+	public function pmpro_checkout_after_pricing_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_pricing_fields',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_pricing_fields',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -146,9 +166,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_username( $user ) {
+	public function pmpro_checkout_after_username( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -167,9 +187,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_password( $user ) {
+	public function pmpro_checkout_after_password( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -188,9 +208,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_email( $user ) {
+	public function pmpro_checkout_after_email( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -205,22 +225,86 @@ class Member_Checkout {
 	}
 
 	/**
-	 * Render the fields for the checkout page in the after billing fields section.
+	 * Render the fields for the checkout page in the after user fields section.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.2
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object.
 	 */
-	public function pmpro_checkout_after_billing_fields( $user ) {
+	public function pmpro_checkout_after_user_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_billing_fields',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_user_fields',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				'pmpro-pods--' . __FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+		] );
+	}
+
+	/**
+	 * Render the fields for the checkout page in the checkout boxes section.
+	 *
+	 * @since 1.0.2
+	 *
+	 * @param WP_User|null $user The user object or null if not provided.
+	 */
+	public function pmpro_checkout_boxes( $user = null ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'boxes',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+		] );
+	}
+
+	/**
+	 * Render the fields for the checkout page in the after billing fields section.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_User|null $user The user object or null if not provided.
+	 */
+	public function pmpro_checkout_after_billing_fields( $user = null ) {
+		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
+			return;
+		}
+
+		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_billing_fields',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -229,18 +313,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_payment_information_fields( $user ) {
+	public function pmpro_checkout_after_payment_information_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_payment_information_fields',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_payment_information_fields',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -249,18 +341,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_tos_fields( $user ) {
+	public function pmpro_checkout_after_tos_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_tos_fields',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_tos_fields',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -269,18 +369,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_captcha( $user ) {
+	public function pmpro_checkout_after_captcha( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'after_captcha',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'after_captcha',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -289,18 +397,26 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_before_submit_button( $user ) {
+	public function pmpro_checkout_before_submit_button( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
 		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
-			'section_field' => 'pmpro_section_checkout',
-			'section'       => 'before_submit_button',
-			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'section_field'               => 'pmpro_section_checkout',
+			'section'                     => 'before_submit_button',
+			'render'                      => 'div-rows',
+			'wrapper'                     => true,
+			'wrapper_class'               => [
+				'pmpro_checkout',
+				__FUNCTION__,
+			],
+			'container_class'             => 'pmpro_checkout-fields',
+			'heading'                     => 'h3',
+			'heading_sub_container'       => 'span',
+			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
 		] );
 	}
 
@@ -321,8 +437,8 @@ class Member_Checkout {
 
 		$is_valid = pods_form_validate_submitted_fields( 'pmpro_membership_user' );
 
-		// Check if it passes validation.
-		if ( true === $is_valid ) {
+		// Check if it passes validation or the Pod doesn't exist.
+		if ( true === $is_valid || null === $is_valid ) {
 			return true;
 		}
 
