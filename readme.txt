@@ -87,9 +87,14 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 
 == Changelog ==
 
+= 1.0.2 - January 4th, 2022 =
+* ENHANCEMENT: Added support for two new locations on the PMPro checkout page: After User Fields and Checkout Boxes. (@sc0ttkclark)
+* BUG FIX: Improved appearance of Pods fields on the PMPro checkout page so they more closely match styles used by PMPro. (@sc0ttkclark)
+* BUG FIX: Prevent PHP notices from usage of certain PMPro hooks when `$user` object is not passed in. (@sc0ttkclark)
+
 = 1.0.1 - November 12th, 2021 =
-* Added support for showing PMPro Member fields on the Membership Account page under the Account Details area. #5 (@sc0ttkclark)
-* Prevent PHP notices on checkout page when logged out. (@sc0ttkclark)
+* ENHANCEMENT: Added support for showing PMPro Member fields on the Membership Account page under the Account Details area. #5 (@sc0ttkclark)
+* BUG FIX: Prevent PHP notices on checkout page when logged out. (@sc0ttkclark)
 
 = 1.0 - October 26th, 2021 =
 * Initial release

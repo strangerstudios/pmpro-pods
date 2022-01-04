@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - Pods Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/pods-integration/
 Description: Integrates Paid Memberships Pro with the Pods Framework to add groups of fields to many areas of your membership site including Member Profiles, the Membership Checkout page, and admin screens including Membership Levels and Orders.
-Version: 1.0.1
+Version: 1.0.2
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-pods
@@ -19,7 +19,7 @@ use PMPro_Pods\Pods\Integration;
 use PMPro_Pods\Pods\Meta_Compatibility;
 use PMPro_Pods\Pods\Permissions;
 
-define( 'PMPRO_PODS_VERSION', '1.0.1' );
+define( 'PMPRO_PODS_VERSION', '1.0.2' );
 define( 'PMPRO_PODS_URL', plugin_dir_url( __FILE__ ) );
 
 /**
