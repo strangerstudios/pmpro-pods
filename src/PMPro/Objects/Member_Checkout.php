@@ -110,9 +110,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_level_cost( $user ) {
+	public function pmpro_checkout_after_level_cost( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -138,9 +138,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_pricing_fields( $user ) {
+	public function pmpro_checkout_after_pricing_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -166,9 +166,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_username( $user ) {
+	public function pmpro_checkout_after_username( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -187,9 +187,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_password( $user ) {
+	public function pmpro_checkout_after_password( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -208,9 +208,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_email( $user ) {
+	public function pmpro_checkout_after_email( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -285,9 +285,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_billing_fields( $user ) {
+	public function pmpro_checkout_after_billing_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -313,9 +313,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_payment_information_fields( $user ) {
+	public function pmpro_checkout_after_payment_information_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -341,9 +341,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_tos_fields( $user ) {
+	public function pmpro_checkout_after_tos_fields( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -369,9 +369,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_captcha( $user ) {
+	public function pmpro_checkout_after_captcha( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -397,9 +397,9 @@ class Member_Checkout {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_User $user The user object.
+	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_before_submit_button( $user ) {
+	public function pmpro_checkout_before_submit_button( $user = null ) {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
@@ -437,8 +437,8 @@ class Member_Checkout {
 
 		$is_valid = pods_form_validate_submitted_fields( 'pmpro_membership_user' );
 
-		// Check if it passes validation.
-		if ( true === $is_valid ) {
+		// Check if it passes validation or the Pod doesn't exist.
+		if ( true === $is_valid || null === $is_valid ) {
 			return true;
 		}
 
