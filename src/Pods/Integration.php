@@ -125,6 +125,10 @@ class Integration {
 	 * @return array The post data to be saved for the Pod.
 	 */
 	public function api_save_pod_post_data( $post_data, $pod ) {
+		if ( empty( $pod ) ) {
+			return $post_data;
+		}
+
 		$type = pods_v( $pod['name'], $this->pod_types );
 
 		if ( empty( $type ) ) {
@@ -147,6 +151,10 @@ class Integration {
 	 * @return array The post meta to be saved for the Pod.
 	 */
 	public function api_save_pod_meta_data( $meta, $pod ) {
+		if ( empty( $pod ) ) {
+			return $meta;
+		}
+
 		$type = pods_v( $pod['name'], $this->pod_types );
 
 		if ( empty( $type ) ) {
@@ -184,6 +192,10 @@ class Integration {
 	 * @return string The default group title.
 	 */
 	public function meta_default_box_title( $title, $pod ) {
+		if ( empty( $pod ) ) {
+			return $title;
+		}
+
 		$type = pods_v( $pod['name'], $this->pod_types );
 
 		if ( empty( $type ) ) {
