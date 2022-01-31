@@ -2,7 +2,7 @@
 Contributors: strangerstudios, sc0ttkclark
 Tags: paid memberships pro, pods
 Requires at least: 5.5
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.6
 Stable tag: 1.0.2
 License: GPLv2 or later
