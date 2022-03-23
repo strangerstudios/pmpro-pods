@@ -1,0 +1,16 @@
+name: WordPress Coding Standards check
+on: pull_request
+jobs:
+  phpcs:
+      name: WPCS
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: WordPress Coding Standards check
+          uses: 10up/wpcs-action@stable
+          with:
+            enable_warnings: false # Whether to enable checking for warnings.
+            excludes: '' # Whether to exclude paths, separated by space.
+            standard: 'WordPress' # The wp phpcs standard to use (see https://github.com/WordPress/WordPress-Coding-Standards).
+            standard_repo: '' # Custom public git repository URL of the coding standard (if needed).
+            repo_branch: 'main' # Custom public git repository branch of coding standard (if needed).
