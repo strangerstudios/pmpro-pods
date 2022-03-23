@@ -120,3 +120,7 @@ function pmpro_pods_init() {
 }
 
 add_action( 'init', '\PMPro_Pods\pmpro_pods_init' );
+
+add_filter('test_filter','__return_false');
+if(isset($test)&&$test=='test')
+	echo '';
