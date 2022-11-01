@@ -1,5 +1,5 @@
 === Paid Memberships Pro - Pods Add On ===
-Contributors: strangerstudios, sc0ttkclark
+Contributors: strangerstudios, sc0ttkclark, paidmembershipspro
 Tags: paid memberships pro, pods
 Requires at least: 5.5
 Tested up to: 5.9
