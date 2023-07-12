@@ -22,7 +22,7 @@ use WP_User;
  *
  * Markup:
  *        <hr />
- *        <h3>Group label</h3>
+ *        <h2>Group label</h2>
  *        <table class="form-table">
  *
  * Save hook:
@@ -127,9 +127,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -155,9 +155,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -246,9 +246,9 @@ class Member_Checkout {
 				'pmpro-pods--' . __FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -274,9 +274,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -302,9 +302,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -330,9 +330,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -358,9 +358,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -386,9 +386,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
@@ -414,9 +414,9 @@ class Member_Checkout {
 				__FUNCTION__,
 			],
 			'container_class'             => 'pmpro_checkout-fields',
-			'heading'                     => 'h3',
+			'heading'                     => 'h2',
 			'heading_sub_container'       => 'span',
-			'heading_sub_container_class' => 'pmpro_checkout-h3-name',
+			'heading_sub_container_class' => 'pmpro_checkout-h2-name',
 		] );
 	}
 
