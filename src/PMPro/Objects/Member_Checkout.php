@@ -22,7 +22,7 @@ use WP_User;
  *
  * Markup:
  *        <hr />
- *        <h3>Group label</h3>
+ *        <h2>Group label</h2>
  *        <table class="form-table">
  *
  * Save hook:
