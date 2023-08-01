@@ -15,12 +15,12 @@ namespace PMPro_Pods\PMPro\Objects;
  *
  * Markup:
  *		<hr />
- *		<h3>Group label</h3>
+ *		<h2>Group label</h2>
  *		<table class="form-table">
  *
  * Markup (pmpro_show_user_profile):
  *		<hr />
- *		<h3>Group label</h3>
+ *		<h2>Group label</h2>
  *		<div ...>
  *
  * Save hook:
@@ -91,7 +91,7 @@ class Member_Profile {
 			'section_field' => 'pmpro_section_member_profile',
 			'section'       => 'show_on_front',
 			'render'        => 'div-rows',
-			'heading'       => 'h3',
+			'heading'       => 'h2',
 			'separator'     => 'off',
 		] );
 	}
@@ -160,7 +160,7 @@ class Member_Profile {
 			'section_field'     => 'pmpro_section_member_profile',
 			'section'           => 'show_on_front',
 			'render'            => 'table-separated',
-			'heading'           => 'h3',
+			'heading'           => 'h2',
 			'separated_heading' => __( 'Order Information', 'pmpro-pods' ),
 			'separator'         => 'off',
 		] );
@@ -177,7 +177,7 @@ class Member_Profile {
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_member_profile',
 			'section'       => 'show_on_admin',
-			'heading'       => 'h3',
+			'heading'       => 'h2',
 		] );
 	}
 
@@ -192,7 +192,7 @@ class Member_Profile {
 		pods_form_render_fields( 'pmpro_membership_user', $user->ID, [
 			'section_field' => 'pmpro_section_member_profile',
 			'section'       => 'show_on_admin',
-			'heading'       => 'h3',
+			'heading'       => 'h2',
 		] );
 	}
 
