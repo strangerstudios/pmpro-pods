@@ -23,7 +23,7 @@ This integration allows you to create and manage groups of fields for many areas
 
 Each group and field can have custom membership level requirements. This means that only users of a specific membership level or a user completing checkout for that membership level can view and complete protected fields.
 
-*Requires [Pods Framework 2.8+](https://wordpress.org/plugins/pods/) and [Paid Memberships Pro 2.6+](https://wordpress.org/plugins/paid-memberships-pro/)*
+*Requires [Pods Framework 2.8.17+](https://wordpress.org/plugins/pods/) and [Paid Memberships Pro 2.6+](https://wordpress.org/plugins/paid-memberships-pro/)*
 
 https://youtu.be/oNUtPO2K0L4
 

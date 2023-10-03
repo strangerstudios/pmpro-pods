@@ -165,7 +165,7 @@ class Permissions {
 
 		// Restrict if not on the checkout page.
 		if ( ! pmpro_is_checkout() ) {
-			$pods_permissions = tribe( Pods_Permissions::class );
+			$pods_permissions = pods_container( Pods_Permissions::class );
 
 			// Admins can see all available checkout fields on any non-checkout form like edit profile.
 			if ( $pods_permissions->is_user_an_admin( null, $user ) ) {
