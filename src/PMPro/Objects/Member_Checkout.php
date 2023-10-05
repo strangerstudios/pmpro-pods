@@ -73,6 +73,9 @@ class Member_Checkout {
 		add_action( 'pmpro_before_send_to_payfast', [ $this, 'save_checkout_data' ], 20, 2 );
 
 		add_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
+
+		// Compatibility for PMPro Add Member Add On. Param 2 is expected to be $order, but it is never used.
+		add_action( 'pmpro_add_member_added', [ $this, 'pmpro_after_checkout' ], 10, 2 );
 	}
 
 	/**
@@ -103,6 +106,9 @@ class Member_Checkout {
 		remove_action( 'pmpro_before_send_to_payfast', [ $this, 'save_checkout_data' ], 20, 2 );
 
 		remove_filter( 'pmpro_registration_checks', [ $this, 'pmpro_registration_checks' ] );
+
+		// Compatibility for PMPro Add Member Add On.
+		remove_action( 'pmpro_add_member_added', [ $this, 'pmpro_after_checkout' ], 10, 2 );
 	}
 
 	/**
