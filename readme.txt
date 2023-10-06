@@ -2,7 +2,7 @@
 Contributors: strangerstudios, sc0ttkclark, paidmembershipspro
 Tags: paid memberships pro, pods
 Requires at least: 5.5
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 5.6
 Stable tag: 1.0.2
 License: GPLv2 or later
@@ -86,6 +86,10 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 13. Use Pods Blocks to display PMPro information in new ways
 
 == Changelog ==
+= 1.0.3 - 2023-10-06 =
+* ENHANCEMENT: Added support for the "Add Member From Admin" Add On. Show fields that are shown at checkout on the Add Member page.
+* ENHANCEMENT: Improved accessibility for screen readers.
+* BUG FIX/ENHANCEMENT: Improved compatibility with the latest version of Pods.
 
 = 1.0.2 - January 4th, 2022 =
 * ENHANCEMENT: Added support for two new locations on the PMPro checkout page: After User Fields and Checkout Boxes. (@sc0ttkclark)
