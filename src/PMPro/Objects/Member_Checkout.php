@@ -115,15 +115,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after level cost section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_level_cost( $user = null ) {
+	public function pmpro_checkout_after_level_cost() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_level_cost',
 			'render'                      => 'div-rows',
@@ -143,15 +143,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after pricing fields section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_pricing_fields( $user = null ) {
+	public function pmpro_checkout_after_pricing_fields() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_pricing_fields',
 			'render'                      => 'div-rows',
@@ -171,15 +171,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after username section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_username( $user = null ) {
+	public function pmpro_checkout_after_username() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_username',
 			'render'        => 'div-rows',
@@ -192,15 +192,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after password section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_password( $user = null ) {
+	public function pmpro_checkout_after_password() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_password',
 			'render'        => 'div-rows',
@@ -213,15 +213,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after email section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_email( $user = null ) {
+	public function pmpro_checkout_after_email() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field' => 'pmpro_section_checkout',
 			'section'       => 'after_email',
 			'render'        => 'div-rows',
@@ -242,7 +242,9 @@ class Member_Checkout {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_user_fields',
 			'render'                      => 'div-rows',
@@ -262,15 +264,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the checkout boxes section.
 	 *
 	 * @since 1.0.2
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_boxes( $user = null ) {
+	public function pmpro_checkout_boxes() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'boxes',
 			'render'                      => 'div-rows',
@@ -290,15 +292,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after billing fields section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_billing_fields( $user = null ) {
+	public function pmpro_checkout_after_billing_fields() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_billing_fields',
 			'render'                      => 'div-rows',
@@ -318,15 +320,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after payment information fields section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_payment_information_fields( $user = null ) {
+	public function pmpro_checkout_after_payment_information_fields() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_payment_information_fields',
 			'render'                      => 'div-rows',
@@ -346,15 +348,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after TOS fields section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_tos_fields( $user = null ) {
+	public function pmpro_checkout_after_tos_fields() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_tos_fields',
 			'render'                      => 'div-rows',
@@ -374,15 +376,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the after captcha section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_after_captcha( $user = null ) {
+	public function pmpro_checkout_after_captcha() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'after_captcha',
 			'render'                      => 'div-rows',
@@ -402,15 +404,15 @@ class Member_Checkout {
 	 * Render the fields for the checkout page in the before submit button section.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @param WP_User|null $user The user object or null if not provided.
 	 */
-	public function pmpro_checkout_before_submit_button( $user = null ) {
+	public function pmpro_checkout_before_submit_button() {
 		if ( ! empty( $GLOBALS['pmpro_review'] ) ) {
 			return;
 		}
 
-		pods_form_render_fields( 'pmpro_membership_user', $user ? $user->ID : null, [
+		$user_id = is_user_logged_in() ? get_current_user_id() : null;
+
+		pods_form_render_fields( 'pmpro_membership_user', $user_id, [
 			'section_field'               => 'pmpro_section_checkout',
 			'section'                     => 'before_submit_button',
 			'render'                      => 'div-rows',
