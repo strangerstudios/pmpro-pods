@@ -2,9 +2,9 @@
 Contributors: strangerstudios, sc0ttkclark, paidmembershipspro
 Tags: paid memberships pro, pods
 Requires at least: 5.5
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ This integration allows you to create and manage groups of fields for many areas
 
 Each group and field can have custom membership level requirements. This means that only users of a specific membership level or a user completing checkout for that membership level can view and complete protected fields.
 
-*Requires [Pods Framework 2.8.17+](https://wordpress.org/plugins/pods/) and [Paid Memberships Pro 2.6+](https://wordpress.org/plugins/paid-memberships-pro/)*
+*Requires [Pods Framework 2.8.17+](https://wordpress.org/plugins/pods/) and [Paid Memberships Pro 2.6+](https://www.paidmembershipspro.com)*
 
 https://youtu.be/oNUtPO2K0L4
 
@@ -67,7 +67,7 @@ For immediate help, also post to our premium support site at [https://www.paidme
 
 = I need help installing, configuring, or customizing the plugin. =
 
-Please visit our premium support site at [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com) for more documentation and our support forums.
+Please visit our premium support site at [https://www.paidmembershipspro.com/support](https://www.paidmembershipspro.com/support) for more documentation and our support forums.
 
 == Screenshots ==
 
@@ -86,6 +86,9 @@ Please visit our premium support site at [https://www.paidmembershipspro.com](ht
 13. Use Pods Blocks to display PMPro information in new ways
 
 == Changelog ==
+= 1.0.4 - 2024-10-18 =
+* FEATURE: Now updating the plugin from paidmembershipspro.com.
+
 = 1.0.3 - 2023-10-06 =
 * ENHANCEMENT: Added support for the "Add Member From Admin" Add On. Show fields that are shown at checkout on the Add Member page.
 * ENHANCEMENT: Improved accessibility for screen readers.

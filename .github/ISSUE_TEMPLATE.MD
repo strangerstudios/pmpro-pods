@@ -11,7 +11,7 @@
 <!-- MARK COMPLETED ITEMS WITH AN [x] -->
 
 - [ ] I have searched for similar issues in both open and closed tickets and cannot find a duplicate.
-- [ ] The issue still exists against the latest `dev` branch of Paid Memberships Pro on Github (this is **not** the same version as on WordPress.org!)
+- [ ] The issue still exists against the latest `dev` branch of Paid Memberships Pro on Github (this is **not** the same version as the latest stable release!)
 - [ ] I have attempted to find the simplest possible steps to reproduce the issue
 
 ## Steps to reproduce the issue
@@ -33,7 +33,7 @@ I was expecting to see...
 <!-- MARK COMPLETED ITEMS WITH AN [x] -->
 
 - [ ] This bug happens with only Paid Memberships Pro plugin active
-- [ ] This bug happens with a default WordPress theme active, or [Memberlite](https://wordpress.org/themes/memberlite/)
+- [ ] This bug happens with a default WordPress theme active, or [Memberlite](https://www.memberlitetheme.com)
 - [ ] I can reproduce this bug consistently using the steps above
 
 ## WordPress Environment
