@@ -4,7 +4,7 @@
 # [Paid Memberships Pro - Pods Integration](https://www.paidmembershipspro.com/add-ons/pods-integration/) #
 [comment]: # (Generate badges from shields.io, only works for .org plugins to get other stats etc. We'd have to create our own endpoints for Premium plugins)
 
-![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dy/pmpro-pods?style=flat-square) ![Travis (.org)](https://img.shields.io/travis/strangerstudios/pmpro-pods?style=flat-square) ![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg?style=flat-square)
+![License](https://img.shields.io/badge/license-GPL--2.0%2B-red.svg?style=flat-square)
 
 
 ### Welcome to the Paid Memberships Pro - Pods Integration GitHub Repository
