@@ -138,7 +138,7 @@ class Member_Profile {
 				printf(
 					'<li><strong>%1$s:</strong> %2$s</li>',
 					esc_html( $field['label'] ),
-					$value
+					wp_kses_post( $value )
 				);
 			}
 		}

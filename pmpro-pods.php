@@ -19,6 +19,10 @@ use PMPro_Pods\Pods\Integration;
 use PMPro_Pods\Pods\Meta_Compatibility;
 use PMPro_Pods\Pods\Permissions;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 define( 'PMPRO_PODS_VERSION', '1.1' );
 define( 'PMPRO_PODS_URL', plugin_dir_url( __FILE__ ) );
 
