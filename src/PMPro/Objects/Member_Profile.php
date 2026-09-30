@@ -117,7 +117,8 @@ class Member_Profile {
 			'return_type'   => 'group',
 		] );
 
-		// Allow the standard post HTML plus oEmbed iframes, matching core PMPro user fields.
+		// Allow the standard post HTML plus iframes for oEmbeds, using the same iframe attributes as core PMPro user fields.
+		// Unlike core, script tags are intentionally not allowed, so script-based embeds show as a plain blockquote.
 		$allowed_html = array_merge(
 			wp_kses_allowed_html( 'post' ),
 			[

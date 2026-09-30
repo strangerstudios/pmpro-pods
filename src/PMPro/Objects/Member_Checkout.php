@@ -477,7 +477,7 @@ class Member_Checkout {
 	 */
 	public function pmpro_paypalexpress_session_vars() {
 		// Map the $_POST submitted fields to $_SESSION.
-		if ( empty( $_POST ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Runs during PMPro checkout after core verifies pmpro_checkout_nonce; only copies to the current session.
+		if ( empty( $_POST ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Runs during PMPro checkout after core checks pmpro_checkout_nonce (skipped only for pre-3.0 custom checkout templates); only copies to the current session.
 			return;
 		}
 
@@ -486,7 +486,7 @@ class Member_Checkout {
 		foreach ( $fields as $field ) {
 			$field_name = $field['name'];
 
-			if ( ! isset( $_POST[ 'pods_meta_' . $field_name ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Runs during PMPro checkout after core verifies pmpro_checkout_nonce.
+			if ( ! isset( $_POST[ 'pods_meta_' . $field_name ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Runs during PMPro checkout after core checks pmpro_checkout_nonce.
 				continue;
 			}
 
