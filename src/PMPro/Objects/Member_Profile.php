@@ -117,6 +117,22 @@ class Member_Profile {
 			'return_type'   => 'group',
 		] );
 
+		// Allow the standard post HTML plus iframes for oEmbeds, using the same iframe attributes as core PMPro user fields.
+		// Unlike core, script tags are intentionally not allowed, so script-based embeds show as a plain blockquote.
+		$allowed_html = array_merge(
+			wp_kses_allowed_html( 'post' ),
+			[
+				'iframe' => [
+					'src'             => true,
+					'height'          => true,
+					'width'           => true,
+					'frameborder'     => true,
+					'allowfullscreen' => true,
+					'allow'           => true,
+				],
+			]
+		);
+
 		foreach ( $groups as $group ) {
 			$fields = $group->get_fields();
 
@@ -138,7 +154,7 @@ class Member_Profile {
 				printf(
 					'<li><strong>%1$s:</strong> %2$s</li>',
 					esc_html( $field['label'] ),
-					$value
+					wp_kses( $value, $allowed_html )
 				);
 			}
 		}
