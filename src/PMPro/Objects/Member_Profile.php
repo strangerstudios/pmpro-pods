@@ -117,6 +117,21 @@ class Member_Profile {
 			'return_type'   => 'group',
 		] );
 
+		// Allow the standard post HTML plus oEmbed iframes, matching core PMPro user fields.
+		$allowed_html = array_merge(
+			wp_kses_allowed_html( 'post' ),
+			[
+				'iframe' => [
+					'src'             => true,
+					'height'          => true,
+					'width'           => true,
+					'frameborder'     => true,
+					'allowfullscreen' => true,
+					'allow'           => true,
+				],
+			]
+		);
+
 		foreach ( $groups as $group ) {
 			$fields = $group->get_fields();
 
@@ -138,7 +153,7 @@ class Member_Profile {
 				printf(
 					'<li><strong>%1$s:</strong> %2$s</li>',
 					esc_html( $field['label'] ),
-					wp_kses_post( $value )
+					wp_kses( $value, $allowed_html )
 				);
 			}
 		}
