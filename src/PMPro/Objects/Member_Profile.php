@@ -99,7 +99,7 @@ class Member_Profile {
 	/**
 	 * Render the fields for the frontend user profile form.
 	 *
-	 * @since TBD
+	 * @since 1.1.1
 	 */
 	public function pmpro_account_bullets_bottom() {
 		$item_id = get_current_user_id();

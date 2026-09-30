@@ -2,9 +2,9 @@
 Contributors: strangerstudios, sc0ttkclark, paidmembershipspro
 Tags: paid memberships pro, pods
 Requires at least: 5.5
-Tested up to: 6.6
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.4
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,9 @@ Please visit our premium support site at [https://www.paidmembershipspro.com/sup
 13. Use Pods Blocks to display PMPro information in new ways
 
 == Changelog ==
+= 1.1.1 - 2026-09-30 =
+* SECURITY: Improved sanitization and escaping throughout the plugin to resolve Plugin Check security findings. #19 (@dparker1005)
+
 = 1.0.4 - 2024-10-18 =
 * FEATURE: Now updating the plugin from paidmembershipspro.com.
 
